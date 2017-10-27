@@ -84,7 +84,7 @@ app.get('/student3d', function(request,response){
     var r = fs.readFileSync('./db/studentWorks3d.json')
     response.send(r)
 })
-app.get('/assistantTeacher', function(request,response){
+app.post('/assistantTeacher', function(request,response){
     var r = fs.readFileSync('./db/assistantTeacherWorks.json')
     response.send(r)
 })

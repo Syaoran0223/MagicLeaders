@@ -9,6 +9,7 @@ const mongoUrl = () => {
     return url
 }
 
+
 // save
 var saveJsonList = function(name, list) {
     const initData = JSON.stringify(list, null, 2)
@@ -40,10 +41,6 @@ var getWorksList = function(typeName, arr) {
     return assistantTeacherList
 }
 
-// 读取图片文件夹 插入到数据库中
-const readImageList = function() {
-
-}
 
 // 随机返回两个数字之间的数字
 const randint = (a, b) => {
@@ -73,7 +70,7 @@ const insert =  (db, data,  callback) => {
     //     // e.number =
     // })
 
-    console.log('debug', data, '长度', data.length)
+    console.log('insert debug', data, '长度', data.length)
 
     //
     // const t1 = {
