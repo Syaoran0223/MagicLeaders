@@ -1,14 +1,14 @@
 [
   {
-    "name": "ball.png",
+    "src": "http://192.168.1.103:3000/images/assistantTeacherWorks/ball.png",
     "number": 0
   },
   {
-    "name": "block.png",
+    "src": "http://192.168.1.103:3000/images/assistantTeacherWorks/block.png",
     "number": 1
   },
   {
-    "name": "paddle.png",
+    "src": "http://192.168.1.103:3000/images/assistantTeacherWorks/paddle.png",
     "number": 2
   }
 ]

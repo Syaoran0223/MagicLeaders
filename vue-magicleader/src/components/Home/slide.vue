@@ -1,5 +1,5 @@
 <template lang="html">
-    <div id='home-slide'>
+    <div id='id-home-slide'>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for='s in slideList'><img :src="s.src" alt="" /></div>

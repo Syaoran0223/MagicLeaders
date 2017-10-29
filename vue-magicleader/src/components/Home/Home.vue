@@ -1,5 +1,5 @@
 <template lang="html">
-    <div id='home'>
+    <div id='id-home'>
         <!-- 轮播图 -->
         <slide></slide>
         <guide></guide>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <v-nav></v-nav>
-        <router-view/>
+        <keep-alive>
+            <router-view/>
+        </keep-alive>
     <v-footer></v-footer>
   </div>
 </template>
@@ -12,9 +14,9 @@ import Footer from '@/components/Public/Footer'
 export default {
   name: 'app',
   components: {
-      'v-nav': Nav,
-      'v-footer': Footer,
-  }
+        'v-nav': Nav,
+        'v-footer': Footer,
+    }
 }
 </script>
 

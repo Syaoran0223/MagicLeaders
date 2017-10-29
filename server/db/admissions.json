@@ -1,0 +1,18 @@
+[
+  {
+    "src": "http://192.168.1.103:3000/images/admissions/Admissions001.jpg",
+    "number": 0
+  },
+  {
+    "src": "http://192.168.1.103:3000/images/admissions/Admissions002.jpg",
+    "number": 1
+  },
+  {
+    "src": "http://192.168.1.103:3000/images/admissions/Admissions003.jpg",
+    "number": 2
+  },
+  {
+    "src": "http://192.168.1.103:3000/images/admissions/Admissions004.jpg",
+    "number": 3
+  }
+]

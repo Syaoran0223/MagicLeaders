@@ -30,7 +30,7 @@ export default {
                 },
                 {
                     title: '师资介绍',
-                    path: '/teacher',
+                    path: '/teacher/home',
                 },
                 {
                     title: '招办动态',

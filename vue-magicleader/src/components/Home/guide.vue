@@ -1,12 +1,19 @@
 <template lang="html">
-    <div id='guide'>
-        <div class="guide-container">
-            <div class="guide-part" v-for='g in guideList'>
-                <div class="guide-part-bg">
+    <div id='id-guide'>
+        <div class="guide-container container-fluid">
+            <div class="row">
+                <div class="guide-part col-lg-3 col-md-3 col-sm-6 col-xs-6" v-for='g in guideList'>
+                    <div class="" v-if=" g.href != ''">
+                        <a :href="g.href" target="_blank">
+                            <div class="guide-part-bg"></div>
+                        </a>
+                        <img :src="g.imgSrc" alt="">
+                    </div>
+                    <div class="" v-else>
+                        <div class="guide-part-bg"></div>
+                        <img :src="g.imgSrc" alt="">
+                    </div>
                 </div>
-                <router-link :to="g.href">
-                    <img :src="g.imgSrc" alt="">
-                </router-link>
             </div>
         </div>
     </div>
@@ -40,32 +47,35 @@ export default {
 </script>
 
 <style lang="css">
-    #guide {
+    #id-guide {
         width: 100%;
     }
+    #id-guide div {
+        margin: 0;
+        padding: 0;
+    }
     .guide-container {
+        width: 100%
+    }
+    .guide-part {
+        position: relative;
+    }
+    .guide-part img {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
+        height: 100%;
+    }
+    .guide-part a {
+        z-index: 100;
     }
     .guide-part-bg {
         position: absolute;
         top: 0;
-        left: 0;
-        height: 100%;
+        margin: 0;
         width: 100%;
-        z-index: 100;
+        height: 100%;
     }
     .guide-part-bg:hover {
         background: black;
         opacity: 0.2;
     }
-    .guide-part {
-        width: 100%;
-        position: relative;
-    }
-    .guide-part img {
-        width: 100%;
-    }
-
 </style>
