@@ -29,8 +29,9 @@ export default {
     font-family: LanTingXiHei;
     src: url('../static/jscss/LanTingXiHei.ttf');
 }
-body {
+html, body {
     font-family: LanTingXiHei;
+    font-size: 10px;
 }
 /*#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

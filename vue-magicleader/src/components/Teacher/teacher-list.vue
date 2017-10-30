@@ -3,7 +3,7 @@
         <div class="teacher-home" v-show='isHome == true'>
             <img :src='homeImg' alt="">
         </div>
-        <div class="teacher-contianer" v-show='isHome ==false '>
+        <div class="teacher-contianer" v-show='isHome == false'>
             <div class="teacher-banner-container">
                 <div class="teacher-banner">
                     <img :src="teacher.banner" alt="">
@@ -12,20 +12,20 @@
                     <div class="teacher-avatar">
                         <img :src="teacher.avatar" alt="">
                     </div>
-                    <!-- <div class="teacher-name">
-
+                    <div class="teacher-name">
+                        {{ teacher.name }}
                     </div>
                     <div class="teacher-weibo">
-
-                    </div> -->
+                        <a :href="weibo">{{ weibo }}</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="teacher-work-list">
-            <div class="teacher-work" v-for='t in teacher.img'>
+        <div class="teacher-work-list">
+            <div class="teacher-work" v-for='t in teacher.thumb'>
                 <img :src="t" alt="">
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -37,6 +37,7 @@ export default {
             isHome: false,
             homeImg: '',
             teacherList: '',
+            teacher: '',
             name: '',
             weibo: '',
             teacherWeibo: {
@@ -70,6 +71,11 @@ export default {
         },
         formatTeacherList() {
             let url = this.$store.state.path + '/teacherList'
+            let teacherImgList = this.$store.state.teacherList
+            if (teacherImgList != undefined) {
+                this.teacherList = teacherImgListSave
+                return
+            }
             $.post(url, (res)=> {
                 let initData = JSON.parse(res)
                 this.teacherList = initData
@@ -77,8 +83,7 @@ export default {
                 console.log('ajax', initData);
             })
         },
-        watchRoute(id='73') {
-            console.log('id', id)
+        watchRoute(id) {
             if (id == 'home' || id == 'tm') {
                 console.log('home || tm', id);
                 this.teacher = ''
@@ -86,10 +91,10 @@ export default {
             } else {
                 this.isHome = false
                 this.teacher = this.teacherList[id]
-                console.log('teacherList', this.teacherList);
-                console.log('this.teacher', this.teacher);
+                // console.log('teacherList', this.teacherList);
+                // console.log('this.teacher', this.teacher);
                 // this.name = id
-                // this.weibo = this.teacherWeibo[id]
+                this.weibo = this.teacherWeibo[id]
             }
             console.log('this.isHome' , this.isHome);
         }
@@ -126,7 +131,43 @@ export default {
     .teacher-banner-container {
         position: relative;
     }
-    .teacher-info {
+    .teacher-banner {
+
 
     }
+    .teacher-info {
+        position: absolute;
+        left: 0;
+        bottom:3em;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 10px;
+    }
+    .teacher-avatar {
+        margin: 0 auto;
+        width: 170px;
+        height: 170px;
+        /*width: 21rem;*/
+    }
+    .teacher-name {
+        font-size: 1.8em;
+    }
+    .teacher-weibo {
+        color: blue;
+        height: 16px;
+        line-height: 16px;
+        font-weight: bolder;
+        font-size: 1.6rem;
+    }
+    .teacher-work-list {
+        display: flex;
+    }
+    .teacher-work {
+        width: 100%;
+    }
+    .teacher-work img{
+        width: 100%;
+    }
+
 </style>

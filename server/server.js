@@ -172,6 +172,7 @@ var getTeacherInfo = function() {
         }
         console.log('o', o.avatar);
         let name = o.avatar.split('avatar-')[1].split('.')[0]
+        o.name = name 
         result[name] = o
     }
     console.log('result', result);

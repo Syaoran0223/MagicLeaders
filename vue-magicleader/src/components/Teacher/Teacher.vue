@@ -1,7 +1,9 @@
 <template>
     <div id="id-teacher">
         <teacher-nav></teacher-nav>
-        <teacher-list></teacher-list>
+        <keep-alive>
+            <teacher-list></teacher-list>
+        </keep-alive>
     </div>
 
 </template>
