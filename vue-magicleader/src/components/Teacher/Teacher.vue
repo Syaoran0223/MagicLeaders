@@ -1,33 +1,38 @@
 <template>
     <div id="id-teacher">
         <teacher-nav></teacher-nav>
-        <div class="teacher-container">
-            <router-view/>
-        </div>
+        <teacher-list></teacher-list>
     </div>
 
 </template>
 
 <script>
 import TeacherNav from '@/components/Teacher/teacherNav'
+import TeacherList from '@/components/Teacher/teacher-list'
 export default {
     data () {
       return {
-
+            teacherList: '',
+            test: '111',
       }
+    },
+    mounted() {
+        // this.params()
+    },
+    methods: {
+        params() {
+            console.log('params', this.$route)
+        },
     },
     components: {
         'teacher-nav':TeacherNav,
-    }
-  }
+        'teacher-list': TeacherList,
+    },
+}
 </script>
 <style>
-    .teacher-container {
-        width: 80%;
+    #id-teacher {
         margin: 0 auto;
     }
-    .teacher-container img {
-        width: 100%;
-        height: 100%;
-    }
+
 </style>

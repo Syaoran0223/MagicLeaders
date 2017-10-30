@@ -43,6 +43,7 @@ export default {
                 this.educationImgList = arr
                 this.$store.commit('educationImgListSave', arr)
             })
+            console.log('this.educationImgList', this.educationImgList)
         },
     },
 }

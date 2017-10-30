@@ -91,7 +91,7 @@ export default {
         position: relative;
     }
     .teacherNav-container {
-        width: 60%;
+        width: 30%;
         color: white;
         margin: 0 auto;
         text-align: center;

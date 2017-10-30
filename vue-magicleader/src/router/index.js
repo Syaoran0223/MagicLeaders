@@ -3,14 +3,15 @@ import Router from 'vue-router'
 import Home from '@/components/Home/Home'
 import About from '@/components/About/About'
 import Teacher from '@/components/Teacher/Teacher'
-import Teacher73 from '@/components/Teacher/73'
+import TeacherHome from '@/components/Teacher/teacher-home'
+import TeacherList from '@/components/Teacher/teacher-list'
 import Education from '@/components/Education/Education'
 import Admissions from '@/components/Admissions/Admissions'
 
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
+    mode: 'hash',
     routes: [
         {
             path: '/',
@@ -23,21 +24,10 @@ export default new Router({
             component: About,
         },
         {
-            path: '/teacher',
+            path: '/teacher/:id',
             name: 'Teacher',
             component: Teacher,
-            children: [
-                {
-                    path:'/home',
-                    component: Teacher73,
-                },
-                {
-                    path:'/73',
-                    component: Teacher73,
-                },
-            ]
         },
-
         {
             path: '/education',
             name: 'Education',

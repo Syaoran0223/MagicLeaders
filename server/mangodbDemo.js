@@ -106,7 +106,7 @@ const insertDocuments = (db, callback) => {
 }
 
 const find = (db, callback) => {
-    const collection = db.collection('test_todo')
+    const collection = db.collection('add')
 
     // find 查询的结果是一个 cursor 实例
     // 使用 toArray 方法将结果转换成数组, 这样我们就可以直接使用

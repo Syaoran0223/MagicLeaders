@@ -1,26 +1,14 @@
 [
   {
-    "src": "http://192.168.1.103:3000/images/education/.DS_Store",
+    "src": "http://www.syaoran.cc:3000/images/education/download.jpg",
     "number": 0
   },
   {
-    "src": "http://192.168.1.103:3000/images/education/e001.jpg",
+    "src": "http://www.syaoran.cc:3000/images/education/u=1230357351,92223899&fm=11&gp=0.jpg",
     "number": 1
   },
   {
-    "src": "http://192.168.1.103:3000/images/education/e002.jpg",
+    "src": "http://www.syaoran.cc:3000/images/education/u=2875524332,436336741&fm=11&gp=0.jpg",
     "number": 2
-  },
-  {
-    "src": "http://192.168.1.103:3000/images/education/e003.jpg",
-    "number": 3
-  },
-  {
-    "src": "http://192.168.1.103:3000/images/education/e004.jpg",
-    "number": 4
-  },
-  {
-    "src": "http://192.168.1.103:3000/images/education/e005.jpg",
-    "number": 5
   }
 ]
