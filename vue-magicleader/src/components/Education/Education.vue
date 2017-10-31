@@ -22,6 +22,7 @@ export default {
         getImageList() {
             let state = this.$store.state
             let url = state.path + '/educationList'
+            console.log('url', url);
             let data = ''
             let imgList = state.educationImgList
             if (imgList != '') {

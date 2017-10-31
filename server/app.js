@@ -5,9 +5,6 @@ var bodyParser = require('body-parser')
 const fs = require('fs')
 // 端口号
 let port = 80
-// 服务器地址
-// let serverIp = 'http://192.168.1.103'
-let serverIp = 'http://www.syaoran.cc'
 // var jsonParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())
 

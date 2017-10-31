@@ -1,6 +1,6 @@
 <template lang="html">
     <div id='id-teacherList'>
-        <div class="teacher-home" v-show='isHome == true'>
+        <div class="teacher-home" v-if='isHome == true'>
             <img :src='homeImg' alt="">
         </div>
         <div class="teacher-contianer" v-show='isHome == false'>
@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             id: '',
-            isHome: false,
+            isHome: true,
             homeImg: '',
             teacherList: '',
             teacher: '',
@@ -53,10 +53,10 @@ export default {
         this.formatHomeImg()
         this.formatTeacherList()
 
+
     },
     mounted() {
-        this.watchRoute()
-        this.formatTeacherList()
+        // this.formatTeacherList()
 
     },
     methods: {
@@ -72,25 +72,32 @@ export default {
         formatTeacherList() {
             let url = this.$store.state.path + '/teacherList'
             let teacherImgList = this.$store.state.teacherList
+            let id = this.$route.params.id
+            console.log('第一次请求ajax', teacherImgList);
             if (teacherImgList != undefined) {
                 this.teacherList = teacherImgListSave
+                this.watchRoute(id)
                 return
             }
             $.post(url, (res)=> {
                 let initData = JSON.parse(res)
                 this.teacherList = initData
-                this.$store.commit('teacherImgoListSave', initData)
+                this.$store.commit('teacherImgListSave', initData)
                 console.log('ajax', initData);
+                console.log('debug id', id);
+                this.watchRoute(id)
             })
         },
         watchRoute(id) {
+            let teacherList = this.$store.state.teacherImgList
+            console.log('debug teacherList', teacherList);
             if (id == 'home' || id == 'tm') {
                 console.log('home || tm', id);
                 this.teacher = ''
                 this.isHome = true
             } else {
                 this.isHome = false
-                this.teacher = this.teacherList[id]
+                this.teacher = teacherList[id]
                 // console.log('teacherList', this.teacherList);
                 // console.log('this.teacher', this.teacher);
                 // this.name = id
@@ -99,12 +106,22 @@ export default {
             console.log('this.isHome' , this.isHome);
         }
     },
+    beforeUpdate() {
+        let id = this.id
+        console.log('beforeUpdate', this.id);
+        this.watchRoute(id)
+
+    },
     watch: {
         $route() {
             // 监听路由 替换内容
+            let path = this.$route.path
+            console.log('watch path', path);
             let id = this.$route.params.id
-            this.id = id
-            this.watchRoute(id)
+            if (path.includes('teacher')) {
+                this.id = id
+                this.watchRoute(id)
+            }
         }
     }
 

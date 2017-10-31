@@ -5,7 +5,9 @@ Vue.use(Vuex);
 let vuex = new Vuex.Store({
     state: {
         // path: 'http://192.168.1.100:3000',
+        // path: 'http://www.magicleaders.com:3000',
         path: 'http://www.syaoran.cc:3000',
+        // imgPath: 'http://www.magicleaders.com:3000/images',
         imgPath: 'http://www.syaoran.cc:3000/images',
 
         // 教学环境
@@ -13,7 +15,7 @@ let vuex = new Vuex.Store({
         // 招班动态
         admissionsImgList: '',
         // 教师目录列表
-        teacherImgoList: '',
+        teacherImgList: '',
     },
     mutations: {
         educationImgListSave(state, educationImgList) {
@@ -22,8 +24,8 @@ let vuex = new Vuex.Store({
         admissionsImgListSave(state, admissionsImgList) {
            state.admissionsImgList = admissionsImgList
         },
-        teacherImgoListSave(state, teacherImgoList) {
-           state.teacherImgoList = teacherImgoList
+        teacherImgListSave(state, teacherImgList) {
+           state.teacherImgList = teacherImgList
         },
     }
 });

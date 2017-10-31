@@ -8,6 +8,8 @@ let port = 3000
 // 服务器地址
 // let serverIp = 'http://192.168.1.100'
 let serverIp = 'http://www.syaoran.cc'
+// let serverIp = 'http://www.magicleaders.com'
+
 // var jsonParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())
 
@@ -172,7 +174,7 @@ var getTeacherInfo = function() {
         }
         console.log('o', o.avatar);
         let name = o.avatar.split('avatar-')[1].split('.')[0]
-        o.name = name 
+        o.name = name
         result[name] = o
     }
     console.log('result', result);
