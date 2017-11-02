@@ -4,9 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/store.js'
-
-
-
+// import VueResource from 'vue-resource'
+// Vue.use(vueResource)﻿​
 
 Vue.config.productionTip = false
 

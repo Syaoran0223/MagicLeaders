@@ -22,8 +22,8 @@
             </div>
         </div>
         <div class="teacher-work-list">
-            <div class="teacher-work" v-for='t in teacher.thumb'>
-                <img :src="t" alt="">
+            <div class="teacher-work" v-for='(t, index) in teacher.thumb' >
+                <img :src="t" alt="" @click='imgSize($event)'>
             </div>
         </div>
     </div>
@@ -35,8 +35,110 @@ export default {
         return {
             id: '',
             isHome: true,
-            homeImg: '',
-            teacherList: '',
+            homeImg: 'static/images/teacher/public/index.jpg',
+            teacherList: {
+              "73": {
+                "img": [
+                  "static/images/teacher/73/op-73-1.jpg",
+                  "static/images/teacher/73/op-73-2.jpg",
+                  "static/images/teacher/73/op-73-3.jpg",
+                  "static/images/teacher/73/op-73-4.jpg",
+                  "static/images/teacher/73/op-73-5.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/73/thumb-73-1.jpg",
+                  "static/images/teacher/73/thumb-73-2.jpg",
+                  "static/images/teacher/73/thumb-73-3.jpg",
+                  "static/images/teacher/73/thumb-73-4.jpg",
+                  "static/images/teacher/73/thumb-73-5.jpg"
+                ],
+                "banner": "static/images/teacher/73/73banner.jpg",
+                "avatar": "static/images/teacher/73/avatar-73.png",
+                "name": "73"
+              },
+              "cy": {
+                "img": [
+                  "static/images/teacher/cy/op-cy-1.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/cy/thumb-cy-03.jpg",
+                  "static/images/teacher/cy/thumb-cy-05.jpg",
+                  "static/images/teacher/cy/thumb-cy-06.jpg",
+                  "static/images/teacher/cy/thumb-cy-07.jpg",
+                  "static/images/teacher/cy/thumb-cy-08.jpg",
+                  "static/images/teacher/cy/thumb-cy-09.jpg",
+                  "static/images/teacher/cy/thumb-cy-10.jpg",
+                  "static/images/teacher/cy/thumb-cy-11.jpg",
+                  "static/images/teacher/cy/thumb-cy-12.jpg"
+                ],
+                "avatar": "static/images/teacher/cy/avatar-cy.png",
+                "banner": "static/images/teacher/cy/banner-cy.jpg",
+                "name": "cy"
+              },
+              "gd": {
+                "img": [
+                  "static/images/teacher/gd/op-gd-01.jpg",
+                  "static/images/teacher/gd/op-gd-02.jpg",
+                  "static/images/teacher/gd/op-gd-03.jpg",
+                  "static/images/teacher/gd/op-gd-04.jpg",
+                  "static/images/teacher/gd/op-gd-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/gd/thumb-gd-01.jpg",
+                  "static/images/teacher/gd/thumb-gd-02.jpg",
+                  "static/images/teacher/gd/thumb-gd-03.jpg",
+                  "static/images/teacher/gd/thumb-gd-04.jpg",
+                  "static/images/teacher/gd/thumb-gd-05.jpg"
+                ],
+                "avatar": "static/images/teacher/gd/avatar-gd.png",
+                "banner": "static/images/teacher/gd/gdbanner.jpg",
+                "name": "gd"
+              },
+              "tm": {
+                "img": [],
+                "thumb": [],
+                "avatar": "static/images/teacher/tm/avatar-tm.png",
+                "name": "tm"
+              },
+              "xy": {
+                "img": [
+                  "static/images/teacher/xy/op-xy-01.jpg",
+                  "static/images/teacher/xy/op-xy-02.jpg",
+                  "static/images/teacher/xy/op-xy-03.jpg",
+                  "static/images/teacher/xy/op-xy-04.jpg",
+                  "static/images/teacher/xy/op-xy-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/xy/thumb-xy-01.jpg",
+                  "static/images/teacher/xy/thumb-xy-02.jpg",
+                  "static/images/teacher/xy/thumb-xy-03.jpg",
+                  "static/images/teacher/xy/thumb-xy-04.jpg",
+                  "static/images/teacher/xy/thumb-xy-05.jpg"
+                ],
+                "avatar": "static/images/teacher/xy/avatar-xy.png",
+                "banner": "static/images/teacher/xy/xybanner.jpg",
+                "name": "xy"
+              },
+              "yz": {
+                "img": [
+                  "static/images/teacher/yz/op-yz-01.jpg",
+                  "static/images/teacher/yz/op-yz-02.jpg",
+                  "static/images/teacher/yz/op-yz-03.jpg",
+                  "static/images/teacher/yz/op-yz-04.jpg",
+                  "static/images/teacher/yz/op-yz-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/yz/thumb-yz-01.jpg",
+                  "static/images/teacher/yz/thumb-yz-02.jpg",
+                  "static/images/teacher/yz/thumb-yz-03.jpg",
+                  "static/images/teacher/yz/thumb-yz-04.jpg",
+                  "static/images/teacher/yz/thumb-yz-05.jpg"
+                ],
+                "avatar": "static/images/teacher/yz/avatar-yz.png",
+                "banner": "static/images/teacher/yz/yzbanner.jpg",
+                "name": "yz"
+              }
+            },
             teacher: '',
             name: '',
             weibo: '',
@@ -50,14 +152,14 @@ export default {
         }
     },
     created() {
-        this.formatHomeImg()
-        this.formatTeacherList()
+        // this.formatHomeImg()
+        // this.formatTeacherList()
 
 
     },
     mounted() {
         // this.formatTeacherList()
-
+        // this.getJsonFile()
     },
     methods: {
         formatHomeImg() {
@@ -69,27 +171,27 @@ export default {
             ]
             this.homeImg = home[0].img
         },
-        formatTeacherList() {
-            let url = this.$store.state.path + '/teacherList'
-            let teacherImgList = this.$store.state.teacherList
-            let id = this.$route.params.id
-            console.log('第一次请求ajax', teacherImgList);
-            if (teacherImgList != undefined) {
-                this.teacherList = teacherImgListSave
-                this.watchRoute(id)
-                return
-            }
-            $.post(url, (res)=> {
-                let initData = JSON.parse(res)
-                this.teacherList = initData
-                this.$store.commit('teacherImgListSave', initData)
-                console.log('ajax', initData);
-                console.log('debug id', id);
-                this.watchRoute(id)
-            })
-        },
+        // formatTeacherList() {
+        //     let url = this.$store.state.path + '/teacherList'
+        //     let teacherImgList = this.$store.state.teacherList
+        //     let id = this.$route.params.id
+        //     console.log('第一次请求ajax', teacherImgList);
+        //     if (teacherImgList != undefined) {
+        //         this.teacherList = teacherImgListSave
+        //         this.watchRoute(id)
+        //         return
+        //     }
+        //     $.post(url, (res)=> {
+        //         let initData = JSON.parse(res)
+        //         this.teacherList = initData
+        //         this.$store.commit('teacherImgListSave', initData)
+        //         console.log('ajax', initData);
+        //         console.log('debug id', id);
+        //         this.watchRoute(id)
+        //     })
+        // },
         watchRoute(id) {
-            let teacherList = this.$store.state.teacherImgList
+            let teacherList = this.teacherList
             console.log('debug teacherList', teacherList);
             if (id == 'home' || id == 'tm') {
                 console.log('home || tm', id);
@@ -104,13 +206,24 @@ export default {
                 this.weibo = this.teacherWeibo[id]
             }
             console.log('this.isHome' , this.isHome);
-        }
-    },
-    beforeUpdate() {
-        let id = this.id
-        console.log('beforeUpdate', this.id);
-        this.watchRoute(id)
-
+        },
+        imgSize(event) {
+            console.log('this', event.target);
+            let img = event.target
+            console.log('img', img);
+            // let newImg = img.replace('thumb', 'op')
+            // console.log('newImg', newImg);
+            let width = img.naturalWidth
+            let height = img.naturalHeight
+            console.log('width', width);
+            console.log('height', height);
+        },
+    // },
+    // beforeUpdate() {
+    //     let id = this.id
+    //     console.log('beforeUpdate', this.id);
+    //     this.watchRoute(id)
+    //
     },
     watch: {
         $route() {

@@ -98,7 +98,15 @@ var teacherList = {}
 // 保存成 Json 格式
 var saveJsonList = function(name, list) {
     const initData = JSON.stringify(list, null, 2)
-    const path = `./db/${name}.json`
+    console.log('debug name', name);
+    let path = '1'
+    if (name == 'teacherList') {
+        path = `../vue-magicleader/db/${name}.json`
+    } else {
+        path = `./db/${name}.json`
+        console.log('进来 path', path, 'name', name);
+    }
+    console.log('path', path, 'name', name);
     fs.writeFileSync(path, initData, 'utf-8')
 }
 
@@ -124,7 +132,8 @@ getWorksList('education', educationList)
 getWorksList('admissions', admissionsList)
 // 读取 teacher 内 多个教师文件夹
 var getTeacherList = function() {
-    const serverPath= `${serverIp}:${port}/images/teacher/`
+    // const serverPath= `${serverIp}:${port}/images/teacher/`
+    const serverPath= `../vue-magicleader/static/images/teacher/`
     const path = imgPath + 'teacher/'
     const readTeacherDir = fs.readdirSync(path)
     let arr = []
@@ -148,7 +157,8 @@ var getTeacherInfo = function() {
         if (fileName == 'public') {
             continue
         }
-        let serverPath= `${serverIp}:${port}/images/teacher/${fileName}/`
+        // let serverPath= `${serverIp}:${port}/images/teacher/${fileName}/`
+        let serverPath= `static/images/teacher/${fileName}/`
         let path = imgPath + 'teacher/' + fileName
         let fileList = fs.readdirSync(path)
         let o = {
