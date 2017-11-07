@@ -1,7 +1,11 @@
 // 引入 express 并且创建一个 express 实例赋值给 app
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+// 读取图片大小
+// const { promisify} = require('util')
+// const sizeOf = promisify(require('image-size'))
+const sizeOf = require('image-size')
 const fs = require('fs')
 // 端口号
 let port = 3000
@@ -99,13 +103,12 @@ var teacherList = {}
 var saveJsonList = function(name, list) {
     const initData = JSON.stringify(list, null, 2)
     console.log('debug name', name);
-    let path = '1'
-    if (name == 'teacherList') {
-        path = `../vue-magicleader/db/${name}.json`
-    } else {
+    // if (name == 'teacherList') {
+    //     path = `./db/${name}.json`
+    // } else {
         path = `./db/${name}.json`
-        console.log('进来 path', path, 'name', name);
-    }
+        // console.log('进来 path', path, 'name', name);
+    // }
     console.log('path', path, 'name', name);
     fs.writeFileSync(path, initData, 'utf-8')
 }
@@ -113,17 +116,31 @@ var saveJsonList = function(name, list) {
 // 读取文件内容 储存进 db/xxxx.json
 var getWorksList = function(typeName, arr) {
     // 路径根据 app.js 当前位置决定
+    const result = []
     const serverPath= `${serverIp}:${port}/images/${typeName}/`
     const path = imgPath + typeName
     const readTeacherDir = fs.readdirSync(path)
-    for (var i = 0; i < readTeacherDir.length; i++) {
-        list = readTeacherDir[i]
+    for (let i = 0; i < readTeacherDir.length; i++) {
+        let fileName = readTeacherDir[i]
+        if (fileName == '.DS_Store') {
+            continue
+        }
+        let localSrc = `../vue-magicleader/images/${typeName}/${fileName}`
         const obj = {}
-        obj.src = serverPath + list
-        obj.number = i
+        obj.src = serverPath + fileName
+        sizeOf(localSrc, function(err, img) {
+            if (err) {
+                console.log('图片错误,无法写入', localSrc);
+                return
+            }
+        })
+        let img = sizeOf(localSrc)
+        obj.w = img.width
+        obj.h = img.height
         arr.push(obj)
     }
-    saveJsonList(typeName, arr)
+        console.log('arr', arr);
+        saveJsonList(typeName, arr)
 }
 getWorksList('assistantTeacherWorks', assistantTeacherList)
 getWorksList('studentWorks2d', student2dList)
@@ -167,6 +184,10 @@ var getTeacherInfo = function() {
         }
         for (var k = 0; k < fileList.length; k++) {
             let f = fileList[k]
+            // console.log('f', f);
+            let localSrc = `../vue-magicleader/images/teacher/${fileName}/${f}`
+            let img = sizeOf(localSrc)
+            // console.log('img', img);
             if (f.includes('banner')) {
                 o.banner = serverPath + f
             }
@@ -174,35 +195,42 @@ var getTeacherInfo = function() {
                 o.avatar = serverPath + f
             }
             if (f.includes('thumb-')) {
-                src = serverPath + f
-                o.thumb.push(src)
+                let data = {}
+                data.src = serverPath + f
+                data.width = img.width
+                data.height = img.height
+                o.thumb.push(data)
             }
             if (f.includes('op-')) {
-                src = serverPath + f
-                o.img.push(src)
+                let data = {}
+                data.src = serverPath + f
+                data.w = img.width
+                data.h = img.height
+                o.img.push(data)
             }
+
         }
-        console.log('o', o.avatar);
+        // console.log('o', o.avatar);
         let name = o.avatar.split('avatar-')[1].split('.')[0]
         o.name = name
         result[name] = o
     }
-    console.log('result', result);
+    // console.log('result', result);
     saveJsonList('teacherList', result)
 }
 getTeacherInfo()
 
 // 发送 post 返回数组
 // 2d学生作品
-app.post('/student2d', function(request,response){
+
+// 2d学生作品
+app.post('/student2dList', function(request,response){
     var r = fs.readFileSync('./db/studentWorks2d.json')
     apiLog('/student2d', r)
-
-
     response.send(r)
 })
 // 3d学生作品
-app.post('/student3d', function(request,response){
+app.post('/student3dList', function(request,response){
     var r = fs.readFileSync('./db/studentWorks3d.json')
     apiLog('/student3d', r)
 

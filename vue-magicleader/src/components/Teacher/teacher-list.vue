@@ -154,8 +154,6 @@ export default {
     created() {
         // this.formatHomeImg()
         // this.formatTeacherList()
-
-
     },
     mounted() {
         // this.formatTeacherList()
@@ -218,12 +216,6 @@ export default {
             console.log('width', width);
             console.log('height', height);
         },
-    // },
-    // beforeUpdate() {
-    //     let id = this.id
-    //     console.log('beforeUpdate', this.id);
-    //     this.watchRoute(id)
-    //
     },
     watch: {
         $route() {
@@ -231,13 +223,12 @@ export default {
             let path = this.$route.path
             console.log('watch path', path);
             let id = this.$route.params.id
-            if (path.includes('teacher')) {
+            if (path.includes('/teacher/')) {
                 this.id = id
                 this.watchRoute(id)
             }
         }
     }
-
 }
 </script>
 

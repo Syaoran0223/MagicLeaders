@@ -16,6 +16,8 @@ let vuex = new Vuex.Store({
         admissionsImgList: '',
         // 教师目录列表
         teacherImgList: '',
+        // 2d 学生作品
+        student2dList: '',
     },
     mutations: {
         educationImgListSave(state, educationImgList) {
@@ -27,6 +29,9 @@ let vuex = new Vuex.Store({
         teacherImgListSave(state, teacherImgList) {
            state.teacherImgList = teacherImgList
         },
+        student2dListSave(state, student2dList) {
+            state.student2dList = student2dList
+        }
     }
 });
 

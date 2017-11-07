@@ -6,6 +6,8 @@ import router from './router'
 import store from './vuex/store.js'
 // import VueResource from 'vue-resource'
 // Vue.use(vueResource)﻿​
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 Vue.config.productionTip = false
 

@@ -1,18 +1,22 @@
 [
   {
-    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions1.jpg",
-    "number": 0
+    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions001.jpg",
+    "width": 1920,
+    "height": 650
   },
   {
-    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions2.jpg",
-    "number": 1
+    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions002.jpg",
+    "width": 4000,
+    "height": 1354
   },
   {
-    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions3.jpg",
-    "number": 2
+    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions003.jpg",
+    "width": 4018,
+    "height": 1360
   },
   {
-    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions4.jpg",
-    "number": 3
+    "src": "http://www.syaoran.cc:3000/images/admissions/Admissions004.jpg",
+    "width": 3000,
+    "height": 1012
   }
 ]

@@ -38,7 +38,7 @@ export default {
                 },
                 {
                     title: '学生作品',
-                    path: '/studentWork',
+                    path: '/student2d',
                 },
                 {
                     title: '助教作品',

@@ -1,5 +1,6 @@
 <template lang="html">
     <div id='id-about'>
+
         <div class="about-container">
             <img :src="aboutImageSrc" alt="">
         </div>
