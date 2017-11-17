@@ -1,17 +1,44 @@
 <template lang="html">
     <div id='nav'>
-        <div class="nav-bg"></div>
-        <div class="nav-container">
-            <div class="nav-logo">
-                <router-link :to="navLogo.path">
-                    <li><img :src="navLogo.img" alt=""></li>
-                </router-link>
-            </div>
-            <div class="nav-list" v-for='n in navlist'>
-                <router-link :to="n.path">
-                    <li>{{ n.title }} </li></router-link>
+        <div id='table-nav'class=" hidden-sm hidden-xs" >
+            <div class="nav-bg"></div>
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <router-link :to="navLogo.path">
+                        <li><img :src="navLogo.img" alt=""></li>
+                    </router-link>
+                </div>
+                <div class="nav-list" v-for='n in navlist'>
+                    <router-link :to="n.path">
+                        <li>{{ n.title }} </li>
+                    </router-link>
+                </div>
             </div>
         </div>
+        <div class="mobile-nav-container hidden-lg hidden-md" @click="mNavShow = !mNavShow">
+            <div class="mobile-nav-title">
+                MagicLeader
+            </div>
+            <div class="mobile-nav ">
+                <el-collapse-transition>
+                    <div v-show="mNavShow">
+                        <div class="mobile-nav-list">
+                            <router-link to="/">
+                                <li> 首页 </li>
+                            </router-link>
+                        </div>
+                        <div class="mobile-nav-list" v-for='n in navlist'>
+
+                            <router-link :to="n.path">
+                                <li>{{ n.title }} </li>
+                            </router-link>
+                        </div>
+                    </div>
+                </el-collapse-transition>
+            </div>
+        </div>
+
+  </div>
     </div>
 </template>
 
@@ -19,6 +46,8 @@
 export default {
     data() {
         return {
+            mNavShow: false,
+            // show3: true,
             navLogo: {
                 img:'static/images/public/logo.png',
                 path: '/',
@@ -38,25 +67,29 @@ export default {
                 },
                 {
                     title: '学生作品',
-                    path: '/student2d',
+                    path: '/studentList/student2d',
                 },
                 {
                     title: '助教作品',
-                    path: '/teacherWork',
+                    path: '/assistantTeacher',
                 },
                 {
                     title: '教学环境',
                     path: '/education',
                 },
-
-            ]
+            ],
         }
+    },
+    created() {
+
+    },
+    methods: {
     }
 }
 </script>
 
 <style lang="css">
-    #nav {
+    #table-nav {
         display: flex;
         justify-content: space-around;
         width: 100%;
@@ -65,18 +98,19 @@ export default {
         background: #323232;
         color: white;
         position: relative;
+        font-size: 14px;
     }
-    #nav a {
+    #table-nav a {
         color: white;
         text-decoration: none;
         width: 100%;
         /*font-size: 10px;*/
     }
-    #nav a:hover {
+    #table-nav a:hover {
         color: #B8B8B8;
         /*background: #B8B8B8;*/
     }
-    #nav li {
+    #table-nav li {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -105,6 +139,40 @@ export default {
         color: white;
         width: 100%;
         text-align: center;
+    }
+
+    /* 移动端导航栏 */
+    .mobile-nav-container {
+        background: black;
+        color: white;
+        /*height: 40px;*/
+        /*line-height: 40px;*/
+        font-size: 14px;
+        text-align: center;
+        list-style: none;
+    }
+    .mobile-nav-container a {
+        color: white;
+        text-decoration: none;
+    }
+    .mobile-nav-title {
+        height: 30px;
+        line-height: 30px;
+    }
+    .mobile-nav {
+        position: absolute;
+        z-index: 1000;
+        text-align: center;
+        width: 100%;
+        background: black;
+    }
+
+    .mobile-nav-list {
+        height: 30px;
+        line-height: 30px;
+    }
+    .mobile-nav {
+        opacity: 0.85;
     }
 
 </style>

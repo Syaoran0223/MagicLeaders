@@ -9,7 +9,6 @@ let vuex = new Vuex.Store({
         path: 'http://www.syaoran.cc:3000',
         // imgPath: 'http://www.magicleaders.com:3000/images',
         imgPath: 'http://www.syaoran.cc:3000/images',
-
         // 教学环境
         educationImgList: '',
         // 招班动态
@@ -18,6 +17,10 @@ let vuex = new Vuex.Store({
         teacherImgList: '',
         // 2d 学生作品
         student2dList: '',
+        // 3d 学生作品
+        student3dList: '',
+        // 助教作品
+        assistantTeacherList: '',
     },
     mutations: {
         educationImgListSave(state, educationImgList) {
@@ -31,6 +34,12 @@ let vuex = new Vuex.Store({
         },
         student2dListSave(state, student2dList) {
             state.student2dList = student2dList
+        },
+        student3dListSave(state, student3dList) {
+            state.student3dList = student3dList
+        },
+        assistantTeacherListSave(state, assistantTeacherList) {
+            state.assistantTeacherList = assistantTeacherList
         }
     }
 });

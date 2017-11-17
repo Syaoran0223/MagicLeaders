@@ -1,27 +1,25 @@
 <template lang="html">
-    <div id='id-student2d'>
-        <!-- <div class="student2d-load" v-if='isLoad'>
+    <div id='id-student3d'>
+        <div class="student3d-load" v-if='isLoad'>
             图片加载中...
-        </div> -->
+        </div>
         <div class="waterfall-container">
-            <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="student2dList" auto-resize='true'>
+            <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="student3dList" auto-resize='true'>
                 <div class="">
                 <waterfall-slot class='waterfall-slot'
-                    v-for="(s, index) in student2dList"
+                    v-for="(s, index) in student3dList"
                     :width="s.w"
                     :height="s.h"
                     :order="index"
                     :key="index"
                   >
                   <div class="img-box">
-                        <img class="preview-img"  :src="s.src"  @click="$preview.open(index, student2dList)">
+                        <img class="preview-img"  :src="s.src"  @click="$preview.open(index, student3dList)">
                   </div>
-
                 </waterfall-slot>
             </div>
             </waterfall>
-            <infinite-loading @infinite="infiniteHandler" >
-                <!-- force-use-infinite-wrapper="true" -->
+            <infinite-loading @infinite="infiniteHandler">
                 <!-- <span slot="no-more">
                     没有更多了...
                 </span> -->
@@ -41,31 +39,30 @@ export default {
         return {
             line: 'h',
             aboutImageSrc: 'static/images/about/about.jpg',
-            student2dList: '11',
+            student3dList: '11',
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
-            addIndex: 20,
+            addIndex: 10,
             totalLength: '1',
+
         }
     },
     created() {
-        this.getStudent2dList()
+        this.getStudent3dList()
 
     },
     mounted() {
-        // this.formatInit()
     },
     methods: {
-        // 获取 图片列表
-        getStudent2dList() {
+        getStudent3dList() {
             let state = this.$store.state
-            let url = state.path + '/student2dList'
+            let url = state.path + '/student3dList'
             console.log('url', url);
-            let imgList = state.student2dList
+            let imgList = state.student3dList
             if (imgList != '') {
                 this.isLoad = false
-                this.student2dList = imgList.slice(this.startIndex, this.loadingIndex)
+                this.student3dList = imgList.slice(0, this.loadingIndex)
                 return
             }
             // 确认 vuex 内没有作品信息后显示 加载中...
@@ -83,40 +80,37 @@ export default {
                     let src = e
                     arr.push(src)
                 })
+                console.log('开始读取图片了1', arr.slice(0, this.loadingIndex));
                 this.isLoad = false
-                this.student2dList = arr.slice(this.startIndex, this.loadingIndex)
-                this.$store.commit('student2dListSave', arr)
+                this.student3dList = arr.slice(0, this.loadingIndex)
+                this.$store.commit('student3dListSave', arr)
             })
-            console.log('this.student2dList', this.student2dList)
+            console.log('this.student3dList', this.student3dList)
         },
-        // 根据滚动条加载图片
-        infiniteHandler($state) {
+        infiniteHandler( $state) {
             setTimeout(() => {
                 this.loadingIndex += this.addIndex
                 this.startIndex += this.addIndex
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
-                let img = this.$store.state.student2dList.slice(startIndex, loadingIndex)
+                let img = this.$store.state.student3dList.slice(startIndex, loadingIndex)
+                console.log('img,length', img.length, startIndex, loadingIndex);
                 if (img.length != 0) {
-                    this.student2dList = this.student2dList.concat(img)
+
+                    this.student3dList = this.student3dList.concat(img)
                     $state.loaded()
-                    console.log('img,length', img.length);
-                } else if(this.$store.state.student2dList.length != 0 && img.length == 0){
+
+                } else if(this.$store.state.student3dList.length != 0 && img.length == 0){
                     $state.complete()
-                    console.log('完成', this.student2dList.length);
+                    console.log('完成', this.student3dList.length);
                 }
             }, 1000);
         },
-
-
     },
     updated() {
-        // this.infiniteHandler($state)
-    console.log('更新了2d');
-    if (this.$store.state.student2dList.length != undefined) {
-        console.log('2d作品进度', this.student2dList.length, '/' ,this.$store.state.student2dList.length);
-    }
-
+        if (this.$store.state.student2dList.length != undefined) {
+                console.log('3d作品进度', this.student3dList.length, '/' ,this.$store.state.student3dList.length);
+        }
     },
     components: {
         Waterfall,
@@ -127,7 +121,7 @@ export default {
 </script>
 
 <style lang="css">
-    #id-student2d {
+    #id-student3d {
         background: #E7E6E5;
     }
     .student2d-load {

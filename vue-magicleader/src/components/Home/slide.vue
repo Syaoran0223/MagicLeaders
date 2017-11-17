@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style lang="css">
+#id-home-slide {
+    border-bottom: 1px #D7DDE1 black; 
+}
 .swiper-container {
     width: 100%;
     height: 100%;

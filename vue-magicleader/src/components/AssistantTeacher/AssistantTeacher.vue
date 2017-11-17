@@ -1,30 +1,27 @@
 <template lang="html">
-    <div id='id-student2d'>
-        <!-- <div class="student2d-load" v-if='isLoad'>
+    <div id='id-assistantTeacher'>
+        <div class="assistantTeacher-load" v-if='isLoad'>
             图片加载中...
-        </div> -->
+        </div>
         <div class="waterfall-container">
-            <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="student2dList" auto-resize='true'>
+            <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="assistantTeacherList" auto-resize='true'>
                 <div class="">
                 <waterfall-slot class='waterfall-slot'
-                    v-for="(s, index) in student2dList"
+                    v-for="(s, index) in assistantTeacherList"
                     :width="s.w"
                     :height="s.h"
                     :order="index"
                     :key="index"
                   >
                   <div class="img-box">
-                        <img class="preview-img"  :src="s.src"  @click="$preview.open(index, student2dList)">
+                        <img class="preview-img"  :src="s.src"  @click="$preview.open(index, assistantTeacherList)">
                   </div>
 
                 </waterfall-slot>
             </div>
             </waterfall>
             <infinite-loading @infinite="infiniteHandler" >
-                <!-- force-use-infinite-wrapper="true" -->
-                <!-- <span slot="no-more">
-                    没有更多了...
-                </span> -->
+
             </infinite-loading>
         </div>
     </div>
@@ -40,8 +37,7 @@ export default {
     data() {
         return {
             line: 'h',
-            aboutImageSrc: 'static/images/about/about.jpg',
-            student2dList: '11',
+            assistantTeacherList: '11',
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
@@ -50,30 +46,28 @@ export default {
         }
     },
     created() {
-        this.getStudent2dList()
+        this.getAssistantTeacherList()
 
     },
     mounted() {
         // this.formatInit()
     },
     methods: {
-        // 获取 图片列表
-        getStudent2dList() {
+        // 获取助教作品列表
+        getAssistantTeacherList() {
             let state = this.$store.state
-            let url = state.path + '/student2dList'
+            let url = state.path + '/assistantTeacher'
             console.log('url', url);
-            let imgList = state.student2dList
+            let imgList = state.assistantTeacherList
             if (imgList != '') {
                 this.isLoad = false
-                this.student2dList = imgList.slice(this.startIndex, this.loadingIndex)
+                this.assistantTeacherList = imgList.slice(0, this.loadingIndex)
                 return
             }
             // 确认 vuex 内没有作品信息后显示 加载中...
             this.isLoad = true
             let _this = this
-            console.log('开始执行读取图片了');
             $.post(url, (res)=> {
-                console.log('开始读取图片了');
                 let initData = JSON.parse(res)
                 let arr = []
                 initData.forEach((e) => {
@@ -81,42 +75,40 @@ export default {
                         return
                     }
                     let src = e
+                    console.log('src', e.src);
                     arr.push(src)
                 })
                 this.isLoad = false
-                this.student2dList = arr.slice(this.startIndex, this.loadingIndex)
-                this.$store.commit('student2dListSave', arr)
+                this.assistantTeacherList = arr.slice(0, this.loadingIndex)
+                console.log('读取到的图片', this.assistantTeacherList);
+                this.$store.commit('assistantTeacherListSave', arr)
             })
-            console.log('this.student2dList', this.student2dList)
+            console.log('this.assistantTeacherList', this.assistantTeacherList)
         },
-        // 根据滚动条加载图片
         infiniteHandler($state) {
             setTimeout(() => {
                 this.loadingIndex += this.addIndex
                 this.startIndex += this.addIndex
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
-                let img = this.$store.state.student2dList.slice(startIndex, loadingIndex)
+                let img = this.$store.state.assistantTeacherList.slice(startIndex, loadingIndex)
                 if (img.length != 0) {
-                    this.student2dList = this.student2dList.concat(img)
+                    this.assistantTeacherList = this.assistantTeacherList.concat(img)
                     $state.loaded()
                     console.log('img,length', img.length);
-                } else if(this.$store.state.student2dList.length != 0 && img.length == 0){
+                } else if(this.$store.state.assistantTeacherList.length != 0 && img.length == 0){
                     $state.complete()
-                    console.log('完成', this.student2dList.length);
+                    console.log('完成', this.assistantTeacherList.length);
                 }
             }, 1000);
         },
-
-
     },
     updated() {
         // this.infiniteHandler($state)
-    console.log('更新了2d');
-    if (this.$store.state.student2dList.length != undefined) {
-        console.log('2d作品进度', this.student2dList.length, '/' ,this.$store.state.student2dList.length);
-    }
-
+    console.log('更新了教师作品列表');
+    if (this.$store.state.assistantTeacherList.length != undefined) {
+                console.log('助教作品进度', this.assistantTeacherList.length , '/', this.$store.state.assistantTeacherList.length);
+        }
     },
     components: {
         Waterfall,
@@ -127,10 +119,10 @@ export default {
 </script>
 
 <style lang="css">
-    #id-student2d {
+    #id-assistantTeacher {
         background: #E7E6E5;
     }
-    .student2d-load {
+    .assistantTeacher-load {
         /*width: 200px;*/
         font-size: 30px;
         text-align: center;
@@ -163,7 +155,4 @@ export default {
         display: none;
         opacity: 0;
     }*/
-    .infinite-status-prompt {
-        display: none;
-    }
 </style>

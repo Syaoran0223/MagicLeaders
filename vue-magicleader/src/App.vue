@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <v-nav></v-nav>
-        <keep-alive>
+        <!-- <keep-alive> -->
             <router-view/>
-        </keep-alive>
+        <!-- </keep-alive> -->
     <v-footer></v-footer>
   </div>
 </template>

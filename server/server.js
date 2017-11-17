@@ -90,7 +90,8 @@ var student2dList = []
 // 学生3d 作品
 var student3dList = []
 // 助教作品
-var assistantTeacherList = []
+var teacherAssistantList = []
+// var teacherAssistantList = []
 // 教学环境
 var educationList = []
 // 招班动态
@@ -142,7 +143,7 @@ var getWorksList = function(typeName, arr) {
         console.log('arr', arr);
         saveJsonList(typeName, arr)
 }
-getWorksList('assistantTeacherWorks', assistantTeacherList)
+getWorksList('assistantTeacherWorks', teacherAssistantList)
 getWorksList('studentWorks2d', student2dList)
 getWorksList('studentWorks3d', student3dList)
 getWorksList('education', educationList)
