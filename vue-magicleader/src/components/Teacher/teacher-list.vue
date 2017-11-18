@@ -336,7 +336,8 @@ export default {
     .teacher-name {
         position: relative;
         top: 15px;
-        font-size: 2.3em;
+        font-size: 3.5em;
+        font-weight: bolder;
         text-align: center;
         width: 100%;
     }
@@ -348,6 +349,10 @@ export default {
         line-height: 16px;
         font-weight: bolder;
         font-size: 1.6rem;
+        color: #26A3DD;
+    }
+    .teacher-weibo a {
+        color: #26A3DD;
     }
     /* 作品标题 */
     .teacher-work-title {

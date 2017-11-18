@@ -1,8 +1,5 @@
 <template lang="html">
     <div id='id-assistantTeacher'>
-        <div class="assistantTeacher-load" v-if='isLoad'>
-            图片加载中...
-        </div>
         <div class="waterfall-container">
             <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="assistantTeacherList" auto-resize='true'>
                 <div class="">

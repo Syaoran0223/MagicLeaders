@@ -3,9 +3,9 @@
         <div id='table-nav'class=" hidden-sm hidden-xs" >
             <div class="nav-bg"></div>
             <div class="nav-container">
-                <div class="nav-logo">
+                <div class="nav-logo" @mouseenter='logoEnter()' @mouseleave='logoLeave()'>
                     <router-link :to="navLogo.path">
-                        <li><img :src="navLogo.img" alt=""></li>
+                        <li><img class='logo' :src="navLogo.img" alt=""></li>
                     </router-link>
                 </div>
                 <div class="nav-list" v-for='n in navlist'>
@@ -36,8 +36,14 @@
                         </div>
                     </div>
                 </el-collapse-transition>
+
             </div>
         </div>
+        <div class="" v-show='mNavShow'>
+            <div class="mobile-nav-bg"  @click='mNavShow = !mNavShow'>
+            </div>
+        </div>
+
 
   </div>
     </div>
@@ -85,22 +91,21 @@ export default {
 
     },
     mounted() {
-        this.changeLogo()
+
     },
     methods: {
-        changeLogo() {
-            let logo = document.querySelector('.nav-logo')
-            logo.addEventListener('mouseover', (e)=> {
-                let self = e.target
-                console.log('self enter', self);
-                self.src = 'static/images/public/logoHover.png'
-            })
-            logo.addEventListener('mouseleave', (e)=> {
-                let self = e.target
-                console.log('self', self);
-                // self.src = 'static/images/public/logo.png'
-            })
+        logoEnter() {
+            let logo = document.querySelector('.logo')
+            logo.src = 'static/images/public/logoHover.png'
+        },
+        logoLeave() {
+            let logo = document.querySelector('.logo')
+            logo.src = 'static/images/public/logo.png'
+        },
+        backNav() {
+            this.mNavShow = false
         }
+
     }
 }
 </script>
@@ -170,6 +175,7 @@ export default {
         list-style: none;
         font-weight: bolder;
     }
+
     .mobile-nav-container a {
         color: white;
         text-decoration: none;
@@ -177,7 +183,7 @@ export default {
     .mobile-nav-title {
         height: 30px;
         line-height: 30px;
-        font-weight: bolder;
+        /*font-weight: bolder;*/
     }
     .mobile-nav {
         position: absolute;
@@ -185,14 +191,30 @@ export default {
         text-align: center;
         width: 100%;
         background: black;
+        z-index: 10000;
     }
 
     .mobile-nav-list {
         height: 30px;
         line-height: 30px;
+        z-index: 150;
     }
     .mobile-nav {
         opacity: 0.85;
     }
+    /* 点击空白返回顶部 */
+    .mobile-nav-bg {
+        position: absolute;
+        /*bottom: 0;*/
+        height: 2000px;
+        width: 100%;
+        bottom: 0;
+        /*background: red;*/
+        /*visibility: hidden;*/
+        z-index: 9999;
+        opacity: 0;
+
+    }
+
 
 </style>

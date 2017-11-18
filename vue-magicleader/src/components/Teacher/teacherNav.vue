@@ -1,18 +1,21 @@
 <template lang="html">
-    <div id='id-teacherNav'>
-        <div class="teacherNav-container">
-            <div class="teacherNav-container-part" v-for='t in teacherNavList' >
+    <div id='id-teacherNav' class="container-fluid">
+        <div class="teacherNav-container col-md-5 col-lg-4 col-sm-6 col-xs-11">
+            <div class="teacherNav-container-part" v-for='(t, index) in teacherNavList' >
+                <div class="teacher-animation" @mouseenter='mouseEnter(t.teacherId, index)' @mouseleave='mouseLeave(t.teacherId, index)'>
                 <router-link :to="t.path" >
                     <div class="teacherNav-container-img" >
                         <img :src="t.imgSrc" alt="">
-                        <!-- <transition name='slide-fade'> -->
-                            <div class="teacherNav-animation-container " v-if='show'>
-                                <div class="teacherNav-animation-bg"></div>
-                                <div class="teacherNav-animation-type">
-                                    {{ t.type}}
+                        <div class="">
+                            <transition name='slide-fade'>
+                                <div class="teacherNav-animation-container " v-if='t.show'>
+                                    <div class="teacherNav-animation-bg"></div>
+                                    <div class="teacherNav-animation-type">
+                                        {{ t.type}}
+                                    </div>
                                 </div>
-                            </div>
-                        <!-- </transition> -->
+                            </transition>
+                        </div>
                     </div>
                     <div class="teacherNav-container-title">
                         {{ t.title}}
@@ -22,10 +25,11 @@
                     </div>
                 </router-link>
             </div>
+            </div>
             <!-- 动画测试 -->
             <!-- <div class="" @mouseenter='test =true' @mouseleave='show = false'>
                 <transition name="fade">
-                    <p v-if="show">hello</p>
+                    <p v-if="show">hell1111111111o</p>
                 </transition>
             </div> -->
         </div>
@@ -38,37 +42,49 @@ export default {
     data() {
         return {
             test: true,
-            show: true,
+            // show: true,
             teacherNavList: [
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/73/avatar-73.png',
                     title: '73',
                     path: '/teacher/73',
                     type: '2D',
+                    show: false,
+                    teacherId: 0,
+
                 },
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/yz/avatar-yz.png',
                     title: 'YZ',
                     path: '/teacher/yz',
-                    type: '2D'
+                    type: '2D',
+                    show: false,
+                    teacherId: 1,
                 },
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/gd/avatar-gd.png',
                     title: '調調',
                     path: '/teacher/gd',
                     type: '2D',
+                    show: false,
+                    teacherId: 2,
                 },
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/xy/avatar-xy.png',
                     title: '逍遥',
                     path: '/teacher/xy',
                     type: '3D',
+                    show: false,
+                    teacherId: 3,
                 },
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/tm/avatar-tm.png',
                     title: 'Mr.TM',
                     path: '/teacher/home',
                     type: '3D',
+                    show: false,
+                    teacherId: 4,
+
                 },
             ],
         }
@@ -77,14 +93,19 @@ export default {
 
     },
     methods: {
-        isShow() {
-            let _this = this
-            // $('.teacherNav-part-bg').on('mouseover', {
-            //     this.show = _this.show
-            // })
-            // $('.teacherNav-part-bg').on('mouseout', {
-            //     _this.show = !_this.show
-            // })
+        mouseEnter(id, index) {
+            this.teacherNavList.forEach((t)=> {
+                if (id === t.teacherId) {
+                    t.show = true
+                } else {
+                    t.show = false
+                }
+            })
+        },
+        mouseLeave(id, index) {
+            this.teacherNavList.forEach((t) => {
+                    t.show = false
+            })
         }
     },
 }
@@ -98,22 +119,30 @@ export default {
         position: relative;
     }
     .teacherNav-container {
-        width: 30%;
+        /*width: 30%;*/
         color: white;
         margin: 0 auto;
         text-align: center;
         display: flex;
         justify-content: space-around;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .teacherNav-container-part {
         width: 50px;
         height: 70px;
-        margin: 10px auto;
+        margin: 15px auto 5px auto;
         position: relative;
+
     }
     .teacherNav-container-part a {
         color: white;
         text-decoration: none;
+    }
+    .teacherNav-container-title {
+        font-size: 14px;
+        font-weight: bold;
     }
     .teacherNav-container-part a:hover .teacherNav-container-title{
         color: #B8B8B8;
@@ -129,12 +158,9 @@ export default {
         width: 100%;
         height: 100%;
     }
-    /* 动画相关 */
-    .teacherNav-container-part:hover .teacherNav-animation-container {
-        display: inline;
-    }
     .teacherNav-animation-container {
-        display: none;
+        position: absolute;
+        top: -0px;
     }
     .teacherNav-animation-bg {
         height: 50px;
@@ -147,6 +173,7 @@ export default {
         border-radius: 50%;
         opacity: 0.5;
     }
+    /* 动画内容 */
     .teacherNav-animation-type {
         position: absolute;
         top: 0;
@@ -155,22 +182,41 @@ export default {
         height: 50px;
         line-height: 50px;
         z-index: 120;
+        font-weight: bolder;
+        color:#66FFFF;
     }
     .teacherNav-part-bg {
 
     }
-    .teacherNav-animation-type {
-        font-weight: bolder;
-    }
 
+
+    .teacher-animation {
+        position: absolute;;
+    }
     /* vue 动画 */
-    .fade-enter-active, .fade-leave-active {
-      transition: opacity .5s
+    .slide-fade-enter-active {
+      transition: all 0.5s ;
+      position: absolute;
+      top: 0;
     }
-    .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
-      opacity: 0
+    .slide-fade-leave-active {
+      transition: all 0.5s ;
+      position: absolute;
+      top: 0;
     }
-
+    .slide-fade-enter
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+      transform: translateX(-10px);
+      opacity: 0;
+      position: absolute;
+      top: 0;
+    }
+     .slide-fade-leave-to {
+         transform: translateX(10px);
+         opacity: 0;
+         position: absolute;
+         top: 0;
+     }
 
 
 

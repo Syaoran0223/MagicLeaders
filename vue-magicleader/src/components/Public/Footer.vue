@@ -171,6 +171,10 @@ export default {
         color: black;
         text-decoration: none;
     }
+    .table-footer {
+        width: 80%;
+        margin: 0 auto;
+    }
     /* 页脚左侧微调 */
     .footer-left-margin {
         position: relative;
@@ -215,6 +219,7 @@ export default {
     .mobile-footer-title {
         font-size: 14px;
         text-align: center;
+        font-weight: bold;
     }
     .mobile-footer-list {
         margin: 5px auto;

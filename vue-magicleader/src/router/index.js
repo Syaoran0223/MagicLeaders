@@ -40,7 +40,7 @@ const router = new Router({
             name: 'About',
             component: About,
             meta: {
-                title: '关于我们'
+                title: '公司介绍'
             },
         },
         {
