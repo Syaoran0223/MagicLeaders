@@ -22,7 +22,14 @@
                     </div>
                 </router-link>
             </div>
+            <!-- 动画测试 -->
+            <!-- <div class="" @mouseenter='test =true' @mouseleave='show = false'>
+                <transition name="fade">
+                    <p v-if="show">hello</p>
+                </transition>
+            </div> -->
         </div>
+
     </div>
 </template>
 
@@ -30,6 +37,7 @@
 export default {
     data() {
         return {
+            test: true,
             show: true,
             teacherNavList: [
                 {
@@ -121,6 +129,13 @@ export default {
         width: 100%;
         height: 100%;
     }
+    /* 动画相关 */
+    .teacherNav-container-part:hover .teacherNav-animation-container {
+        display: inline;
+    }
+    .teacherNav-animation-container {
+        display: none;
+    }
     .teacherNav-animation-bg {
         height: 50px;
         width: 50px;
@@ -144,17 +159,16 @@ export default {
     .teacherNav-part-bg {
 
     }
-    /* 动画 */
-    .slide-fade-enter-active {
-        transition: all .3s ease;
+    .teacherNav-animation-type {
+        font-weight: bolder;
     }
-    .slide-fade-leave-active {
-      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+
+    /* vue 动画 */
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s
     }
-    .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for below version 2.1.8 */ {
-      transform: translateX(10px);
-      opacity: 0;
+    .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+      opacity: 0
     }
 
 

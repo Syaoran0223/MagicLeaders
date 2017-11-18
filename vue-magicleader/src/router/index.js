@@ -19,69 +19,99 @@ import Education from '@/components/Education/Education'
 // 招班动态
 import Admissions from '@/components/Admissions/Admissions'
 
+// 更新标题 API
+import changeTitle from '@/components/API/changeTitle'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'hash',
     routes: [
         {
             path: '/',
             name: 'Home',
             component: Home,
+            meta: {
+                title: '曼奇立德'
+            },
         },
         {
             path: '/about',
             name: 'About',
             component: About,
+            meta: {
+                title: '关于我们'
+            },
         },
         {
             path: '/teacher/:id',
             name: 'Teacher',
             component: Teacher,
-            children: [
-                {
-                    path: 'home',
-                    name: 'teacherHome',
-                    component: TeacherHome,
-                },
-                {
-                    path: '73',
-                    name: 'teacher73',
-                    component: Teacher73,
-                },
-            ]
+            meta: {
+                title: '师资介绍'
+            },
+            // children: [
+            //     {
+            //         path: 'home',
+            //         name: 'teacherHome',
+            //         component: TeacherHome,
+            //     },
+            //     {
+            //         path: '73',
+            //         name: 'teacher73',
+            //         component: Teacher73,
+            //     },
+            // ]
         },
         {
             path: '/studentList',
             name: 'studentList',
-            component: StudentList,
+            component: StudentList,meta: {
+                title: '学生作品'
+            },
             children: [
                 {
                     path: 'student2d',
                     name: 'student2d',
                     component: Student2d,
+                    meta: {
+                        title: '2D研修班'
+                    },
                 },
                 {
                     path: 'student3d',
                     name: 'student3d',
                     component: Student3d,
+                    meta: {
+                        title: '3D艺核班'
+                    },
                 },
+
             ]
         },
         {
             path: '/assistantTeacher',
             name: 'AssistantTeacher',
             component: AssistantTeacher,
+            meta: {
+                title: '助教作品'
+            },
         },
         {
             path: '/education',
             name: 'Education',
             component: Education,
+            meta: {
+                title: '教学环境'
+            },
         },
         {
             path: '/admissions',
             name: 'Admissions',
             component: Admissions,
+            meta: {
+                title: '招班动态'
+            },
         },
         {
           path:'*',
@@ -90,3 +120,12 @@ export default new Router({
 
     ]
 })
+// 页面自动更新标题
+　router.beforeEach((to, from, next) => {
+    changeTitle(to.meta.title);
+    // document.title = title;
+
+    next();
+});
+
+export default router

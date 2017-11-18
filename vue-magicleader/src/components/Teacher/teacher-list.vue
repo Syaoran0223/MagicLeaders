@@ -25,12 +25,11 @@
         <div class="teacher-work-title" v-if='isHome == false'>
             Exhibition of works
         </div>
-        <div class="teacher-work-list">
-            <div class="teacher-work" v-for='(t, index) in teacher.thumb' >
+        <div class="teacher-work-list ">
+            <span class="teacher-work" v-for='(t, index) in teacher.thumb' >
                 <!-- <img :src="t.src" alt=""> -->
                 <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.img)">
-                <!-- <img :src="t" alt="" @click='imgSize($event)'> -->
-            </div>
+            </span>
         </div>
     </div>
 </template>
@@ -274,6 +273,7 @@ export default {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
+        max-width: 5000px;
     }
     .teeacher-home {
         width: 100%;
@@ -359,21 +359,38 @@ export default {
         height: 3.0rem;
         line-height: 3.0rem;
         font-size: 1.6rem;
+        font-weight: bolder;
     }
     /* 作品列表 */
     .teacher-work-list {
         display: flex;
         width: 100%;
     }
+    .teacher-work-list span {
+        display: inline-block;
+    }
     .teacher-work {
-        flex:1;
         width: 100%;
     }
     .teacher-work img{
         width: 100%;
     }
+
     .teacher-work:hover {
         cursor: pointer;
     }
 
+    @media only screen and (max-width:800px) {
+        .teacher-work-list {
+            width: 100%;
+            display: block;
+        }
+        .teacher-work {
+            width: 100%;
+        }
+        .teacher-work img {
+            width: 100%;
+        }
+
+    }
 </style>

@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+        <!-- 移动端 -->
         <div class="mobile-nav-container hidden-lg hidden-md" @click="mNavShow = !mNavShow">
             <div class="mobile-nav-title">
                 MagicLeader
@@ -62,7 +63,7 @@ export default {
                     path: '/teacher/home',
                 },
                 {
-                    title: '招办动态',
+                    title: '招班动态',
                     path: '/admissions',
                 },
                 {
@@ -83,7 +84,23 @@ export default {
     created() {
 
     },
+    mounted() {
+        this.changeLogo()
+    },
     methods: {
+        changeLogo() {
+            let logo = document.querySelector('.nav-logo')
+            logo.addEventListener('mouseover', (e)=> {
+                let self = e.target
+                console.log('self enter', self);
+                self.src = 'static/images/public/logoHover.png'
+            })
+            logo.addEventListener('mouseleave', (e)=> {
+                let self = e.target
+                console.log('self', self);
+                // self.src = 'static/images/public/logo.png'
+            })
+        }
     }
 }
 </script>
@@ -99,6 +116,7 @@ export default {
         color: white;
         position: relative;
         font-size: 14px;
+        font-weight: bolder;
     }
     #table-nav a {
         color: white;
@@ -150,6 +168,7 @@ export default {
         font-size: 14px;
         text-align: center;
         list-style: none;
+        font-weight: bolder;
     }
     .mobile-nav-container a {
         color: white;
@@ -158,6 +177,7 @@ export default {
     .mobile-nav-title {
         height: 30px;
         line-height: 30px;
+        font-weight: bolder;
     }
     .mobile-nav {
         position: absolute;

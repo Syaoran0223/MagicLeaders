@@ -5,17 +5,20 @@
             <router-view/>
         <!-- </keep-alive> -->
     <v-footer></v-footer>
+    <v-goTop></v-goTop>
   </div>
 </template>
 
 <script>
 import Nav from '@/components/Public/Nav'
 import Footer from '@/components/Public/Footer'
+import GoTop from '@/components/Public/GoTop'
 export default {
   name: 'app',
   components: {
         'v-nav': Nav,
         'v-footer': Footer,
+        'v-goTop': GoTop,
     }
 }
 </script>

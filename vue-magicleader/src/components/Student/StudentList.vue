@@ -1,8 +1,8 @@
 <template lang="html">
     <div class="">
         <div id='id-student-nav'>
-            <div class="student-nav-container">
-                <div class="student-nav-list" v-for='n in navList'>
+            <div class="student-nav-container ">
+                <div class="student-nav-list col-md-1 col-lg-1" v-for='n in navList'>
                     <router-link :to="n.path">
                         <div>{{ n.title }} </div>
                     </router-link>
@@ -67,10 +67,9 @@ export default {
     }
     .student-nav-container {
         height: 100%;
-        width: 15%;
         margin: 0 auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         text-align: center;
         background: black;
     }
@@ -81,5 +80,9 @@ export default {
         text-align: center;
         font-size: 14px;
         text-decoration: none;
+        font-weight: bolder;
+    }
+    .teacherNav-container-title  {
+        font-weight: bolder;
     }
 </style>

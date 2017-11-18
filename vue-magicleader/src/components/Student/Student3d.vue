@@ -70,7 +70,6 @@ export default {
             let _this = this
             console.log('开始执行读取图片了');
             $.post(url, (res)=> {
-                console.log('开始读取图片了');
                 let initData = JSON.parse(res)
                 let arr = []
                 initData.forEach((e) => {
@@ -80,7 +79,8 @@ export default {
                     let src = e
                     arr.push(src)
                 })
-                console.log('开始读取图片了1', arr.slice(0, this.loadingIndex));
+                // 随机排序
+                arr = _.shuffle(arr)
                 this.isLoad = false
                 this.student3dList = arr.slice(0, this.loadingIndex)
                 this.$store.commit('student3dListSave', arr)

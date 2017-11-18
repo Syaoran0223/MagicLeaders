@@ -9,11 +9,19 @@ import store from './vuex/store.js'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+
 // 点击查看图片
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
 
+// 点击返回顶部 Blu UI
+import VueBlu from 'vue-blu'
+import 'vue-blu/dist/css/vue-blu.min.css'
+Vue.use(VueBlu)
 
+// 点击切换标题
+// Vue.use(VueRouterTitle,options)
+Vue.use(require('vue-wechat-title'));
 
 Vue.config.productionTip = false
 

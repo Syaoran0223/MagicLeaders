@@ -83,6 +83,8 @@ export default {
                     let src = e
                     arr.push(src)
                 })
+                // 随机排序
+                arr = _.shuffle(arr)
                 this.isLoad = false
                 this.student2dList = arr.slice(this.startIndex, this.loadingIndex)
                 this.$store.commit('student2dListSave', arr)

@@ -1,8 +1,6 @@
 <template lang="html">
     <div id='footer'>
-        <div class="footer-line">
-
-        </div>
+        <div class="footer-line"></div>
         <div class="table-footer hidden-sm hidden-xs">
             <div class="footer-container">
                 <!-- left -->
@@ -10,8 +8,8 @@
                     <div class="footer-part-title">
                         {{ footerPartLeft[0].title}}
                     </div>
-                    <div class="footer-part-content-container">
-                        <ul class="footer-part-content" v-for='left in footerPartLeft.slice(1)'>
+                    <div class="footer-part-content-container footer-left-margin">
+                        <ul class="footer-part-content " v-for='left in footerPartLeft.slice(1)'>
                             <a :href="left.path" target="_blank">
                                 <li>
                                     {{ left.title }}
@@ -173,6 +171,11 @@ export default {
         color: black;
         text-decoration: none;
     }
+    /* 页脚左侧微调 */
+    .footer-left-margin {
+        position: relative;
+        top: 10px;
+    }
     .footer-container {
         width: 85%;
         margin: 0 auto;
@@ -220,5 +223,4 @@ export default {
         font-size: 13px;
         text-align: center;
     }
-
 </style>

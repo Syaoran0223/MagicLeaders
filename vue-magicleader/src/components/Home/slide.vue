@@ -51,7 +51,7 @@ export default {
 
 <style lang="css">
 #id-home-slide {
-    border-bottom: 1px #D7DDE1 black; 
+    border-bottom: 1px solid #D7DDE1;
 }
 .swiper-container {
     width: 100%;
