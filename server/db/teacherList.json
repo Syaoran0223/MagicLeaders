@@ -3,28 +3,28 @@
     "img": [
       {
         "src": "static/images/teacher/73/op-73-1.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       },
       {
         "src": "static/images/teacher/73/op-73-2.jpg",
-        "width": 1664,
-        "height": 1000
+        "w": 1664,
+        "h": 1000
       },
       {
         "src": "static/images/teacher/73/op-73-3.jpg",
-        "width": 1500,
-        "height": 901
+        "w": 1500,
+        "h": 901
       },
       {
         "src": "static/images/teacher/73/op-73-4.jpg",
-        "width": 1664,
-        "height": 1000
+        "w": 1664,
+        "h": 1000
       },
       {
         "src": "static/images/teacher/73/op-73-5.jpg",
-        "width": 1663,
-        "height": 1000
+        "w": 1663,
+        "h": 1000
       }
     ],
     "thumb": [
@@ -69,28 +69,28 @@
     "img": [
       {
         "src": "static/images/teacher/gd/op-gd-01.jpg",
-        "width": 1500,
-        "height": 813
+        "w": 1500,
+        "h": 813
       },
       {
         "src": "static/images/teacher/gd/op-gd-02.jpg",
-        "width": 1200,
-        "height": 581
+        "w": 1200,
+        "h": 581
       },
       {
         "src": "static/images/teacher/gd/op-gd-03.jpg",
-        "width": 596,
-        "height": 800
+        "w": 596,
+        "h": 800
       },
       {
         "src": "static/images/teacher/gd/op-gd-04.jpg",
-        "width": 650,
-        "height": 912
+        "w": 650,
+        "h": 912
       },
       {
         "src": "static/images/teacher/gd/op-gd-05.jpg",
-        "width": 630,
-        "height": 800
+        "w": 630,
+        "h": 800
       }
     ],
     "thumb": [
@@ -134,28 +134,28 @@
     "img": [
       {
         "src": "static/images/teacher/xy/op-xy-01.jpg",
-        "width": 525,
-        "height": 700
+        "w": 525,
+        "h": 700
       },
       {
         "src": "static/images/teacher/xy/op-xy-02.jpg",
-        "width": 800,
-        "height": 700
+        "w": 800,
+        "h": 700
       },
       {
         "src": "static/images/teacher/xy/op-xy-03.jpg",
-        "width": 525,
-        "height": 700
+        "w": 525,
+        "h": 700
       },
       {
         "src": "static/images/teacher/xy/op-xy-04.jpg",
-        "width": 525,
-        "height": 700
+        "w": 525,
+        "h": 700
       },
       {
         "src": "static/images/teacher/xy/op-xy-05.jpg",
-        "width": 525,
-        "height": 700
+        "w": 525,
+        "h": 700
       }
     ],
     "thumb": [
@@ -193,28 +193,28 @@
     "img": [
       {
         "src": "static/images/teacher/yz/op-yz-01.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       },
       {
         "src": "static/images/teacher/yz/op-yz-02.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       },
       {
         "src": "static/images/teacher/yz/op-yz-03.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       },
       {
         "src": "static/images/teacher/yz/op-yz-04.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       },
       {
         "src": "static/images/teacher/yz/op-yz-05.jpg",
-        "width": 1200,
-        "height": 678
+        "w": 1200,
+        "h": 678
       }
     ],
     "thumb": [

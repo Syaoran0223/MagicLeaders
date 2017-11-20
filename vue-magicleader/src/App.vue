@@ -33,7 +33,7 @@ export default {
     src: url('../static/jscss/LanTingXiHei.ttf');
 }
 html, body {
-    font-family: LanTingXiHei;
+    /*font-family: LanTingXiHei;*/
     font-size: 10px;
 }
 /*#app {

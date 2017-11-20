@@ -121,7 +121,7 @@ export default {
         color: white;
         position: relative;
         font-size: 14px;
-        font-weight: bolder;
+        /*font-weight: bolder;*/
     }
     #table-nav a {
         color: white;

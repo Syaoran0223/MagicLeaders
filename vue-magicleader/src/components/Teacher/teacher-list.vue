@@ -347,7 +347,7 @@ export default {
         color: blue;
         height: 16px;
         line-height: 16px;
-        font-weight: bolder;
+        /*font-weight: bolder;*/
         font-size: 1.6rem;
         color: #26A3DD;
     }
@@ -361,10 +361,10 @@ export default {
         text-align: center;
         background: #373434;
         color: white;
-        height: 3.0rem;
-        line-height: 3.0rem;
+        height: 3.2rem;
+        line-height: 3.2rem;
         font-size: 1.6rem;
-        font-weight: bolder;
+        /*font-weight: bolder;*/
     }
     /* 作品列表 */
     .teacher-work-list {

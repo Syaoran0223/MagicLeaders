@@ -11,8 +11,8 @@ const fs = require('fs')
 let port = 3000
 // 服务器地址
 // let serverIp = 'http://192.168.1.100'
-let serverIp = 'http://www.syaoran.cc'
-// let serverIp = 'http://www.magicleaders.com'
+// let serverIp = 'http://www.syaoran.cc'
+let serverIp = 'http://www.magicleaders.com'
 
 // var jsonParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())
@@ -103,14 +103,14 @@ var teacherList = {}
 // 保存成 Json 格式
 var saveJsonList = function(name, list) {
     const initData = JSON.stringify(list, null, 2)
-    console.log('debug name', name);
+    // console.log('debug name', name);
     // if (name == 'teacherList') {
     //     path = `./db/${name}.json`
     // } else {
         path = `./db/${name}.json`
         // console.log('进来 path', path, 'name', name);
     // }
-    console.log('path', path, 'name', name);
+    // console.log('path', path, 'name', name);
     fs.writeFileSync(path, initData, 'utf-8')
 }
 
@@ -123,6 +123,7 @@ var getWorksList = function(typeName, arr) {
     const readTeacherDir = fs.readdirSync(path)
     for (let i = 0; i < readTeacherDir.length; i++) {
         let fileName = readTeacherDir[i]
+        // console.log('i', i, '文件夹', typeName, '文件', fileName);
         if (fileName == '.DS_Store') {
             continue
         }
@@ -140,7 +141,9 @@ var getWorksList = function(typeName, arr) {
         obj.h = img.height
         arr.push(obj)
     }
-        console.log('arr', arr);
+        console.log('readTeacherDir', typeName, readTeacherDir.length);
+        console.log('arr.length', arr.length);
+        // console.log('arr', arr);
         saveJsonList(typeName, arr)
 }
 getWorksList('assistantTeacherWorks', teacherAssistantList)
@@ -226,6 +229,7 @@ getTeacherInfo()
 
 // 2d学生作品
 app.post('/student2dList', function(request,response){
+    console.log('网站发起了请求');
     var r = fs.readFileSync('./db/studentWorks2d.json')
     apiLog('/student2d', r)
     response.send(r)

@@ -34,7 +34,7 @@ export default {
                 },
                 {
                     imgSrc:'static/images/home/index3.jpg',
-                    href:'',
+                    href:'https://weibo.com/u/6409416360?is_hot=1',
                 },
                 {
                     imgSrc:'static/images/home/index4.jpg',

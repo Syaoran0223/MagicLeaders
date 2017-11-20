@@ -1,8 +1,19 @@
 <template lang="html">
     <div id='id-admissions'>
         <div class="admissions-container">
-            <div class="admissions-img" v-for='a in admissionsImgList'>
-                <img :src="a">
+            <div class="admissions-img">
+                <img :src="admissionsImgList[0]">
+            </div>
+            <div class="admissions-img" >
+                <a href="http://blog.sina.com.cn/s/blog_1775283300102wwkk.html" target="_blank">
+                    <img :src="admissionsImgList[1]">
+                </a>
+            </div>
+            <div class="admissions-img">
+                <img :src="admissionsImgList[2]">
+            </div>
+            <div class="admissions-img" >
+                <img :src="admissionsImgList[3]">
             </div>
         </div>
     </div>

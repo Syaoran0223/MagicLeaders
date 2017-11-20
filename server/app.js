@@ -13,7 +13,14 @@ app.use(express.static('../vue-magicleader/dist/'))
 
 // log
 const log = console.log.bind(console, '---debug---')
-
+// 配置 跨域
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 // 返回页面
 var sendHtml = function(path, response) {
     var options = {

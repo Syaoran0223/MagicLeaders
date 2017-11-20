@@ -1,27 +1,32 @@
 [
   {
     "src": "http://www.syaoran.cc:3000/images/education/e001.jpg",
-    "width": 2600,
-    "height": 1858
+    "w": 2600,
+    "h": 1858
   },
   {
     "src": "http://www.syaoran.cc:3000/images/education/e002.jpg",
-    "width": 1754,
-    "height": 1254
+    "w": 1754,
+    "h": 1254
   },
   {
     "src": "http://www.syaoran.cc:3000/images/education/e003.jpg",
-    "width": 2213,
-    "height": 3000
+    "w": 2213,
+    "h": 3000
   },
   {
     "src": "http://www.syaoran.cc:3000/images/education/e004.jpg",
-    "width": 2100,
-    "height": 3000
+    "w": 2100,
+    "h": 3000
   },
   {
     "src": "http://www.syaoran.cc:3000/images/education/e005.jpg",
-    "width": 2100,
-    "height": 3000
+    "w": 2100,
+    "h": 3000
+  },
+  {
+    "src": "http://www.syaoran.cc:3000/images/education/paddle.png",
+    "w": 64,
+    "h": 16
   }
 ]

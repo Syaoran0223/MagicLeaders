@@ -142,7 +142,7 @@ export default {
     }
     .teacherNav-container-title {
         font-size: 14px;
-        font-weight: bold;
+        /*font-weight: bold;*/
     }
     .teacherNav-container-part a:hover .teacherNav-container-title{
         color: #B8B8B8;

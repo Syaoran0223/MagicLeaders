@@ -25,19 +25,18 @@
                         {{ footerPartContent[0].title}}
                     </div>
                     <ul class="footer-part-content-container">
-                        <li class="footer-part-content" v-for='contetn in footerPartContent.slice(1)' :class="{'footer-content-fix': contetn.fix}">
+                        <li class="footer-part-content footer-content-patr-fix" v-for='contetn in footerPartContent.slice(1)' :class="{'footer-content-fix': contetn.fix}">
                             {{ contetn.title }}
                         </li>
                     </ul>
                 </div>
                 <!-- right -->
                 <div class="footer-part">
-                    <div class="footer-part-title">
+                    <div class="footer-part-title footer-right-fix">
                         {{ footerPartRight[0].title}}
                     </div>
-                    <ul class="footer-part-content-container">
-
-                        <li class="footer-part-content"     v-for='right in footerPartRight.slice(1)'>
+                    <ul class="footer-part-content-container footer-right-part-fix">
+                        <li class="footer-part-content" v-for='right in footerPartRight.slice(1)'>
                             {{ right.title }}
                         </li>
                     </ul>
@@ -153,11 +152,12 @@ export default {
 </script>
 
 <style lang="css">
+
     /* 页脚顶部横线 */
     .footer-line {
         width: 80%;
         border-bottom: 1px solid #ABABAB;
-        margin: 20px auto;
+        margin: 15px auto;
     }
     #footer {
         width: 100%;
@@ -174,11 +174,29 @@ export default {
     .table-footer {
         width: 80%;
         margin: 0 auto;
+        position: relative;
+        left: 5%;
+        top: -15px;
     }
     /* 页脚左侧微调 */
     .footer-left-margin {
         position: relative;
-        top: 10px;
+        top: 5px;
+    }
+    /*右侧微调*/
+    .footer-right-fix {
+        position: relative;
+        top: -5px;
+    }
+    /* 右侧内容高度微调 */
+    .footer-right-part-fix {
+        position: relative;
+        top: -8px;
+    }
+    /* 页脚中间微调 */
+    .footer-content-patr-fix {
+        position: relative;
+        top: -8px;
     }
     .footer-container {
         width: 85%;
@@ -193,14 +211,18 @@ export default {
         justify-content: space-around;
         flex-direction: column;
         text-align: left;
+        padding: 0;
     }
     .footer-part-title {
         font-size: 14px;
-        line-height: 15px;
+        line-height: 14px;
         color: black;
+        margin-top: 5px;
+        font-weight: bold;
     }
     .footer-part-content-container {
         position: relative;
+        /*top: -2px;*/
 
     }
     .footer-part-content {
@@ -210,6 +232,7 @@ export default {
         margin-top: 5px;
         box-sizing: border-box;
         list-style: none;
+        color: black;
     }
     /* 修复行高问题*/
     .footer-content-fix {
