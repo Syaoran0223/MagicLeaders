@@ -54,15 +54,27 @@
         "height": 400
       }
     ],
-    "banner": "static/images/teacher/73/73banner.jpg",
+    "banner": [
+      {
+        "src": "static/images/teacher/73/73banner.jpg",
+        "width": 2882,
+        "height": 900
+      }
+    ],
     "avatar": "static/images/teacher/73/avatar-73.png",
     "name": "73"
   },
   "cy": {
     "img": [],
     "thumb": [],
+    "banner": [
+      {
+        "src": "static/images/teacher/cy/cybanner.jpg",
+        "width": 2914,
+        "height": 900
+      }
+    ],
     "avatar": "static/images/teacher/cy/avatar-cy.png",
-    "banner": "static/images/teacher/cy/cybanner.jpg",
     "name": "cy"
   },
   "gd": {
@@ -120,13 +132,20 @@
         "height": 540
       }
     ],
+    "banner": [
+      {
+        "src": "static/images/teacher/gd/gdbanner.jpg",
+        "width": 2913,
+        "height": 900
+      }
+    ],
     "avatar": "static/images/teacher/gd/avatar-gd.png",
-    "banner": "static/images/teacher/gd/gdbanner.jpg",
     "name": "gd"
   },
   "tm": {
     "img": [],
     "thumb": [],
+    "banner": [],
     "avatar": "static/images/teacher/tm/avatar-tm.png",
     "name": "tm"
   },
@@ -185,8 +204,14 @@
         "height": 400
       }
     ],
+    "banner": [
+      {
+        "src": "static/images/teacher/xy/xybanner.jpg",
+        "width": 2908,
+        "height": 900
+      }
+    ],
     "avatar": "static/images/teacher/xy/avatar-xy.png",
-    "banner": "static/images/teacher/xy/xybanner.jpg",
     "name": "xy"
   },
   "yz": {
@@ -244,8 +269,14 @@
         "height": 400
       }
     ],
+    "banner": [
+      {
+        "src": "static/images/teacher/yz/yzbanner.jpg",
+        "width": 2882,
+        "height": 900
+      }
+    ],
     "avatar": "static/images/teacher/yz/avatar-yz.png",
-    "banner": "static/images/teacher/yz/yzbanner.jpg",
     "name": "yz"
   }
 }

@@ -1,40 +1,134 @@
 <template lang="html">
     <div id='id-teacherList'>
-        <div class="teacher-home" v-if='isHome == true'>
-            <img :src='homeImg' alt="">
-        </div>
-        <div class="teacher-contianer" v-show='isHome == false'>
-            <div class="teacher-banner-container">
-                <div class="teacher-banner">
-                    <img :src="teacher.banner" alt="">
+
+
+
+        <!-- PC -->
+        <!-- <div class=""v-for='t in teacherList[teacher.name].banner'> -->
+            <!-- <img :src="t.src" alt=""> -->
+        <!-- </div> -->
+        <div class="teacherList-table hidden-xs hidden-sm">
+            <div class="teacher-home" v-if='isHome == true'>
+                <img :src='homeImg' alt="">
+            </div>
+            <div class="" v-else>
+                <!-- banner 开始 -->
+                <div class="teacher-table-banner">
+                    <div class="teacher-swiper-container" id='teacher-swiper-container'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide " v-for='t in banner'>
+                                <img :src="t" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <!-- 教师介绍 -->
+                        <div class="table-teacherInfo">
+                            <div class="table-teacherInfo-container">
+                                <div class="table-teacher-avatar">
+                                    <img :src="teacher.avatar" alt="">
+                                </div>
+                                <div class="table-teacher-name">
+                                    {{ teacherName[teacher.name] }}
+                                </div>
+                                <div class="table-teacher-info">
+                                    <p class="table-teacher-info-detail" v-for='i in teacherInfo[teacher.name]'>
+                                        {{ i}}
+                                    </p>
+
+                                </div>
+                                <div class="table-teacher-weibo">
+                                    <a :href="weibo">{{ weibo }}</a>
+                                </div>
+                                <div class="table-teacher-logo">
+                                    <img src="static/images/teacher/public/teacher-logo.png" alt="">
+                                </div>
+                            </div>
+                            <div class="table-teacherInfo-bg"></div>
+                        </div>
+                        <!-- 教师介绍结束 -->
+                    </div>
                 </div>
-                <div class="teacher-info">
-                    <div class="teacher-avatar">
-                        <img :src="teacher.avatar" alt="">
-                    </div>
-                    <div class="teacher-name">
-                        {{ teacherName[teacher.name] }}
-                    </div>
-                    <div class="teacher-weibo">
-                        <a :href="weibo">{{ weibo }}</a>
-                    </div>
+                <!-- banner 结束 -->
+                <div class="teacher-work-title" v-if='isHome == false'>
+                    作品展示
                 </div>
-                <div class="teahcer-bannerbg"></div>
+                <!-- 作品 -->
+                <div class="teacher-waterfall-container">
+                    <waterfall :line-gap="500" :max-line-gap="800" :min-line-gap="400" :watch="teacher.img" auto-resize='true'>
+                        <div class="">
+                            <waterfall-slot class='waterfall-slot'
+                                v-for="(s, index) in teacher.img"
+                                :width="s.w"
+                                :height="s.h"
+                                :order="index"
+                                :key="index"
+                              >
+                              <div class="img-box">
+                                    <img class="preview-img"  :src="s.src"  @click="$preview.open(index, teacher.img)">
+                              </div>
+                            </waterfall-slot>
+                    </div>
+                    </waterfall>
+                </div>
             </div>
         </div>
-        <div class="teacher-work-title" v-if='isHome == false'>
-            Exhibition of works
+        <!-- 移动端 -->
+        <div class="teacherList-mobile hidden-lg hidden-md">
+            <div class="teacher-home" v-if='isHome == true'>
+                <img :src='homeImg' alt="">
+            </div>
+            <div class="teacher-contianer" v-else>
+                <div class="teacher-banner-container">
+                    <div class="teacher-banner">
+                        <img :src="teacher.banner[0]" alt="">
+                        <!-- <img :src="bannerbg" alt=""> -->
+                    </div>
+                    <div class="teacher-info">
+                        <div class="teacher-avatar">
+                            <img :src="teacher.avatar" alt="">
+                        </div>
+                        <div class="teacher-name">
+                            {{ teacherName[teacher.name] }}
+                        </div>
+                        <div class="teacher-weibo">
+                            <a :href="weibo">{{ weibo }}</a>
+                        </div>
+                    </div>
+                    <div class="teahcer-bannerbg"></div>
+                </div>
+            </div>
+            <div class="teacher-work-title" v-if='isHome == false'>
+                Exhibition of works
+            </div>
+            <div class="teacher-work-list ">
+                <span class="teacher-work" v-for='(t, index) in teacher.thumb' >
+                    <!-- <img :src="t.src" alt=""> -->
+                    <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.img)">
+                </span>
+            </div>
         </div>
-        <div class="teacher-work-list ">
-            <span class="teacher-work" v-for='(t, index) in teacher.thumb' >
-                <!-- <img :src="t.src" alt=""> -->
-                <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.img)">
-            </span>
-        </div>
+    </div>
+
+
+
+            <!-- <div class="teacher-work-list ">
+                <span class="teacher-work" v-for='(t, index) in teacher.thumb' >
+                    <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.img)">
+                </span>
+            </div> -->
+            <!-- </div>
+
+        </div> -->
+
     </div>
 </template>
 
 <script>
+// 引入无限加载插件
+import InfiniteLoading from 'vue-infinite-loading';
+// 引入瀑布流插件
+import Waterfall from 'vue-waterfall/lib/waterfall'
+import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 export default {
     data() {
         return {
@@ -144,11 +238,15 @@ export default {
             //     "name": "yz"
             //   }
             // },
+            // 总教师信息列表
             teacherList: {},
             thumb: {},
+            banner: '',
+            // 页面显示的教师信息
             teacher: '',
             name: '',
             weibo: '',
+            banner: '',
             teacherWeibo: {
                 '73': 'http://weibo.com/73art',
                 'yz': '',
@@ -163,13 +261,19 @@ export default {
                 'xy': '逍遥',
                 'tm': 'Mr.Tm',
             },
+            teacherInfo: {
+                '73': ['曼奇立德主讲老师/资深游戏原画师/CG艺术家'],
+                'yz': ['7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。科班出身，拥有扎实的绘画理论基础及教学理念，良好的审美感。'],
+                'gd': ['好好画画'],
+                'xy': ['从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作，能力全面，在公司内长期进行新人引导和培训，拥有极佳的专业态度。'],
+                'tm': '',
+            },
             bannerbg: 'www.syaoran.cc:3000/images/public/bannerbg.png'
         }
     },
     created() {
         // this.formatHomeImg()
         this.formatTeacherList()
-
         // 初始化页面, 刷新后跳转到达正确位置
         let path = this.$route.path
         console.log('watch path', path);
@@ -179,11 +283,42 @@ export default {
             this.watchRoute(id)
         }
     },
+    updated() {
+        this.bannerSwiper()
+    },
     mounted() {
         this.formatTeacherList()
+            this.bannerSwiper()
+
+        // this.bannerSwiper()
+        // this.formatTeacherList()
+        // banner轮播图
         // this.getJsonFile()
     },
     methods: {
+        bannerSwiper:()=> {
+            new Swiper('#teacher-swiper-container', {
+                pagination: '.swiper-pagination',
+                // nextButton: '.swiper-button-next',
+                // prevButton: '.swiper-button-prev',
+                // wrapperClass: 'teacher-swiper-wrapper',
+                // slideClass: 'teacher-swiper-slide',
+                observer:true,
+                observeParents:true,
+                // paginationClickable: true,
+                spaceBetween: 0,
+                speed: 1000,
+                effect : 'fade',
+                crossFade:true,
+                preloadImages: true,
+                updateOnImagesReady : true,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false,
+                loop : true,
+                initialSlide: 1,
+            });
+            console.log('执行了', );
+        },
         formatHomeImg() {
             let state = this.$store.state.imgPath + '/teacher'
             let home = [
@@ -201,6 +336,7 @@ export default {
             if (teacherImgList != undefined) {
                 this.teacherList = teacherImgListSave
                 this.watchRoute(id)
+                // this.bannerSwiper()
                 return
             }
             $.post(url, (res)=> {
@@ -210,6 +346,8 @@ export default {
                 console.log('ajax', initData);
                 console.log('debug id', id);
                 this.watchRoute(id)
+                // this.bannerSwiper()
+
             })
         },
         // 监听路由
@@ -223,26 +361,11 @@ export default {
             } else {
                 this.isHome = false
                 this.teacher = teacherList[id]
-
-                // this.thumb = teacherList[id]['thumb']
-                // console.log('this.thumb', this.thumb);
-                // console.log('teacherList', this.teacherList);
                 console.log('this.teacher', this.teacher);
-                // this.name = id
+                this.banner = this.teacher.banner
                 this.weibo = this.teacherWeibo[id]
             }
             console.log('this.isHome' , this.isHome);
-        },
-        imgSize(event) {
-            console.log('this', event.target);
-            let img = event.target
-            console.log('img', img);
-            // let newImg = img.replace('thumb', 'op')
-            // console.log('newImg', newImg);
-            let width = img.naturalWidth
-            let height = img.naturalHeight
-            console.log('width', width);
-            console.log('height', height);
         },
     },
     watch: {
@@ -254,10 +377,14 @@ export default {
             if (path.includes('/teacher/')) {
                 this.id = id
                 this.watchRoute(id)
-                // location.reload()
             }
-        }
-    }
+        },
+    },
+    components: {
+        Waterfall,
+        WaterfallSlot,
+        InfiniteLoading,
+    },
 }
 </script>
 
@@ -265,6 +392,7 @@ export default {
     #id-teacherList {
         margin: 0;
         padding: 0;
+        position: relative;
     }
     .teacher-banner img  {
         /*width: 100%;*/
@@ -291,25 +419,11 @@ export default {
         width: 100%;
         overflow-x:hidden;
     }
-    /* 添加 banner 阴影 */
-    /*.teahcer-bannerbg {
-        height: 200px;
-        background: black;
-        width: 100%;
-        position: absolute;
-        bottom: 0px;
-        z-index: 200;
-        background: linear-gradient(360deg,black, #ffffff);
-        opacity: 0.9;
-    }*/
     .teacher-banner{
         position: relative;
     }
     .teacher-banner img {
         z-index: 100;
-        /*background-image: url('@/static/images/teacher/public/bannerbg.png')
-        background-repeat: repeat-x;
-        background-size: 100%, 100%;*/
     }
 
     .teacher-info {
@@ -354,6 +468,108 @@ export default {
     .teacher-weibo a {
         color: #26A3DD;
     }
+    /* PC端 banner轮播图 */
+    .teacher-table-banner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .teacher-swiper-container {
+        width: 100%;
+        height: 100%;
+        /*width: 200px;*/
+        /*height: 200px;*/
+        overflow-x: hidden;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+    }
+    .swiper-container img {
+        width: 100%;
+        height: 100%;
+    }
+    /* PC教师信息 */
+    .table-teacherInfo {
+        position: absolute;
+        left: 7%;
+        top: 0;
+        width: 20rem;
+        height: 100%;
+        z-index: 500;
+    }
+    .table-teacherInfo-container {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        /*background: lightblue;*/
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 600;
+    }
+    .table-teacher-avatar {
+        position: relative;
+        width: 9rem;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+        z-index: 501;
+    }
+    .table-teacher-avatar img {
+        width: 100%;
+    }
+    .table-teacher-name {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        z-index: 501;
+        position: relative;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+    }
+    .table-teacher-info {
+        color: white;
+        text-align:center;
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
+    .table-teacher-info p+p {
+        margin-top: 1rem;
+    }
+    .table-teacher-weibo {
+        position: relative;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .table-teacher-logo {
+        width: 10rem;
+        height: 7rem;
+        /*position: absolute;*/
+        position: relative;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .table-teacher-logo img{
+        width: 100%;
+    }
+    /* PC banner 背景*/
+    .table-teacherInfo-bg {
+        position: absolute;
+        top: 0;
+        left: 0x;
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.6;
+        z-index: 500;
+    }
+
+
     /* 作品标题 */
     .teacher-work-title {
         position: relative;
@@ -363,10 +579,10 @@ export default {
         color: white;
         height: 3.2rem;
         line-height: 3.2rem;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         /*font-weight: bolder;*/
     }
-    /* 作品列表 */
+    /* 移动端作品列表 */
     .teacher-work-list {
         display: flex;
         width: 100%;
@@ -384,7 +600,31 @@ export default {
     .teacher-work:hover {
         cursor: pointer;
     }
+    /* Pc端作品列表 */
+    .teacher-waterfall-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #302E2E;
+        padding-top: 50px;
+    }
+    .vue-waterfall{
+        width: 79%;
+        margin: 0 auto;
+    }
+    .img-box {
+        margin: 10px;
+        border: 5px solid white;
+        /*background: red;*/
 
+    }
+    .waterfall-slot {
+        margin: 10px;
+    }
+    .waterfall-slot img {
+        z-index: 100;
+        width: 100%;
+    }
     @media only screen and (max-width:800px) {
         .teacher-work-list {
             width: 100%;

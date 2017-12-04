@@ -124,8 +124,12 @@ const router = new Router({
 　router.beforeEach((to, from, next) => {
     changeTitle(to.meta.title);
     // document.title = title;
-
+    if (to.path) {
+        _hmt.push(['_trackPageview', '/#' + to.fullPath]);
+        console.log('访问+1');
+ }
     next();
 });
+
 
 export default router

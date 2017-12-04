@@ -140,7 +140,7 @@ export default {
                     title: '咨询热线 / Hotline'
                 },
                 {
-                    title: '电话: 18065175256'
+                    title: '电话: 15060154981'
                 },
                 {
                     title: '邮箱：magicleaders@qq.com',

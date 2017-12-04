@@ -16,7 +16,6 @@
                   <div class="img-box">
                         <img class="preview-img"  :src="s.src"  @click="$preview.open(index, student2dList)">
                   </div>
-
                 </waterfall-slot>
             </div>
             </waterfall>

@@ -11,8 +11,8 @@ const fs = require('fs')
 let port = 3000
 // 服务器地址
 // let serverIp = 'http://192.168.1.100'
-// let serverIp = 'http://www.syaoran.cc'
-let serverIp = 'http://www.magicleaders.com'
+let serverIp = 'http://www.syaoran.cc'
+// let serverIp = 'http://www.magicleaders.com'
 
 // var jsonParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())
@@ -178,13 +178,14 @@ var getTeacherInfo = function() {
         if (fileName == 'public') {
             continue
         }
-        // let serverPath= `${serverIp}:${port}/images/teacher/${fileName}/`
-        let serverPath= `static/images/teacher/${fileName}/`
+        let serverPath= `${serverIp}:${port}/images/teacher/${fileName}/`
+        // let serverPath= `static/images/teacher/${fileName}/`
         let path = imgPath + 'teacher/' + fileName
         let fileList = fs.readdirSync(path)
         let o = {
             img: [],
             thumb: [],
+            banner: [],
         }
         for (var k = 0; k < fileList.length; k++) {
             let f = fileList[k]
@@ -193,7 +194,8 @@ var getTeacherInfo = function() {
             let img = sizeOf(localSrc)
             // console.log('img', img);
             if (f.includes('banner')) {
-                o.banner = serverPath + f
+                src = serverPath + f
+                o.banner.push(src)
             }
             if (f.includes('avatar')) {
                 o.avatar = serverPath + f

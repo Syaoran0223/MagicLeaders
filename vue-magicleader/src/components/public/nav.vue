@@ -151,7 +151,7 @@ export default {
         /*background: red;*/
     }
     .nav-container {
-        position: absolute;
+        /*position: absolute;*/
         height: 40px;
         width: 70%;
         display: flex;
