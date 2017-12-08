@@ -26,15 +26,15 @@ export default {
             guideList: [
                 {
                     imgSrc:'static/images/home/index1.jpg',
-                    href:'https://pan.baidu.com/s/1nvTxhIp?qq-pf-to=pcqq.c2c&errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0#list/path=%2F&parentPath=%2F',
+                    href:'https://pan.baidu.com/s/1nvTxhIp?qq-pf-to=pcqq.c2c&errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0#list/path=%2F%E6%8A%A5%E5%90%8D%E8%A1%A8&parentPath=%2F',
                 },
                 {
                     imgSrc:'static/images/home/index2.jpg',
-                    href:'https://pan.baidu.com/s/1nvTxhIp?qq-pf-to=pcqq.c2c&errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0#list/path=%2F&parentPath=%2F',
+                    href:'https://weibo.com/6409416360/profile?topnav=1&wvr=6&is_all=1',
                 },
                 {
                     imgSrc:'static/images/home/index3.jpg',
-                    href:'https://weibo.com/u/6409416360?is_hot=1',
+                    href:'http://blog.sina.com.cn/s/blog_8c2294c70102x1c8.html',
                 },
                 {
                     imgSrc:'static/images/home/index4.jpg',

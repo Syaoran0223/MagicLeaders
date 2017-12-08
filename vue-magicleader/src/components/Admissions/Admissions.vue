@@ -5,15 +5,19 @@
                 <img :src="admissionsImgList[0]">
             </div>
             <div class="admissions-img" >
-                <a href="http://blog.sina.com.cn/s/blog_1775283300102wwkk.html" target="_blank">
+                    <a href="http://blog.sina.com.cn/s/blog_8c2294c70102wwbb.html" target="_blank">
                     <img :src="admissionsImgList[1]">
                 </a>
             </div>
             <div class="admissions-img">
-                <img :src="admissionsImgList[2]">
+                <a href="http://blog.sina.com.cn/s/blog_8c2294c70102x0mm.html" target="_blank">
+                    <img :src="admissionsImgList[2]">
+                </a>
             </div>
             <div class="admissions-img" >
-                <img :src="admissionsImgList[3]">
+                <a href="http://blog.sina.com.cn/s/blog_8c2294c70102wtes.html" target="_blank">
+                    <img :src="admissionsImgList[3]">
+                </a>
             </div>
         </div>
     </div>

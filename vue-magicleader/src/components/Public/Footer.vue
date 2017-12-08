@@ -21,7 +21,7 @@
                 </div>
                 <!-- content -->
                 <div class="footer-part">
-                    <div class="footer-part-title">
+                    <div class="footer-part-title footer-content-title-fix">
                         {{ footerPartContent[0].title}}
                     </div>
                     <ul class="footer-part-content-container">
@@ -111,12 +111,8 @@ export default {
                     title: '相关链接 /  Related Links'
                 },
                 {
-                    title: '曼奇立德博客',
+                    title: '曼奇立德官方微博',
                     path: 'http://weibo.com/magicleaders',
-                },
-                {
-                    title: '曼奇立德CG美术博客',
-                    path: 'http://blog.sina.com.cn/magicleaders',
                 },
                 {
                     title: '73老师微博',
@@ -157,7 +153,7 @@ export default {
     .footer-line {
         width: 80%;
         border-bottom: 1px solid #ABABAB;
-        margin: 15px auto;
+        margin: 15px auto 30px auto;
     }
     #footer {
         width: 100%;
@@ -181,22 +177,26 @@ export default {
     /* 页脚左侧微调 */
     .footer-left-margin {
         position: relative;
-        top: 5px;
+        /*top: 5px;*/
     }
     /*右侧微调*/
     .footer-right-fix {
         position: relative;
-        top: -5px;
+        /*top: -5px;*/
     }
     /* 右侧内容高度微调 */
     .footer-right-part-fix {
         position: relative;
-        top: -8px;
+        /*top: -8px;*/
     }
     /* 页脚中间微调 */
     .footer-content-patr-fix {
         position: relative;
-        top: -8px;
+        /*top: -8px;*/
+    }
+    .footer-content-title-fix {
+        position: relative;
+        top: 2px;
     }
     .footer-container {
         width: 85%;
@@ -217,7 +217,7 @@ export default {
         font-size: 14px;
         line-height: 14px;
         color: black;
-        margin-top: 5px;
+        /*margin-top: 5px;*/
         font-weight: bold;
     }
     .footer-part-content-container {
@@ -227,7 +227,7 @@ export default {
     }
     .footer-part-content {
         width: 80%;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 14px;
         margin-top: 5px;
         box-sizing: border-box;

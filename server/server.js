@@ -186,6 +186,8 @@ var getTeacherInfo = function() {
             img: [],
             thumb: [],
             banner: [],
+            m: [],
+            mt:[],
         }
         for (var k = 0; k < fileList.length; k++) {
             let f = fileList[k]
@@ -213,6 +215,20 @@ var getTeacherInfo = function() {
                 data.w = img.width
                 data.h = img.height
                 o.img.push(data)
+            }
+            if (f.includes('m-')) {
+                let data = {}
+                data.src = serverPath + f
+                data.w = img.width
+                data.h = img.height
+                o.m.push(data)
+            }
+            if (f.includes('mt-')) {
+                let data = {}
+                data.src = serverPath + f
+                data.w = img.width
+                data.h = img.height
+                o.mt.push(data)
             }
 
         }

@@ -20,7 +20,7 @@
                                 <img :src="t" alt="">
                             </div>
                         </div>
-                        <div class="swiper-pagination"></div>
+                        <!-- <div class="swiper-pagination"></div> -->
                         <!-- 教师介绍 -->
                         <div class="table-teacherInfo">
                             <div class="table-teacherInfo-container">
@@ -101,9 +101,11 @@
                 Exhibition of works
             </div>
             <div class="teacher-work-list ">
-                <span class="teacher-work" v-for='(t, index) in teacher.thumb' >
-                    <!-- <img :src="t.src" alt=""> -->
-                    <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.img)">
+                <span class="teacher-work" v-for='(t, index) in teacher.mt':width="t.w"
+                :height="t.h"
+                :order="index"
+                :key="index" >
+                    <img class="preview-img"  :src="t.src"  @click="$preview.open(index, teacher.m)">
                 </span>
             </div>
         </div>
@@ -135,109 +137,114 @@ export default {
             id: '',
             isHome: true,
             homeImg: 'static/images/teacher/public/index.jpg',
-            // teacherList: {
-            //   "73": {
-            //     "img": [
-            //       "static/images/teacher/73/op-73-1.jpg",
-            //       "static/images/teacher/73/op-73-2.jpg",
-            //       "static/images/teacher/73/op-73-3.jpg",
-            //       "static/images/teacher/73/op-73-4.jpg",
-            //       "static/images/teacher/73/op-73-5.jpg"
-            //     ],
-            //     "thumb": [
-            //       "static/images/teacher/73/thumb-73-1.jpg",
-            //       "static/images/teacher/73/thumb-73-2.jpg",
-            //       "static/images/teacher/73/thumb-73-3.jpg",
-            //       "static/images/teacher/73/thumb-73-4.jpg",
-            //       "static/images/teacher/73/thumb-73-5.jpg"
-            //     ],
-            //     "banner": "static/images/teacher/73/73banner.jpg",
-            //     "avatar": "static/images/teacher/73/avatar-73.png",
-            //     "name": "73"
-            //   },
-            //   "cy": {
-            //     "img": [
-            //       "static/images/teacher/cy/op-cy-1.jpg"
-            //     ],
-            //     "thumb": [
-            //       "static/images/teacher/cy/thumb-cy-03.jpg",
-            //       "static/images/teacher/cy/thumb-cy-05.jpg",
-            //       "static/images/teacher/cy/thumb-cy-06.jpg",
-            //       "static/images/teacher/cy/thumb-cy-07.jpg",
-            //       "static/images/teacher/cy/thumb-cy-08.jpg",
-            //       "static/images/teacher/cy/thumb-cy-09.jpg",
-            //       "static/images/teacher/cy/thumb-cy-10.jpg",
-            //       "static/images/teacher/cy/thumb-cy-11.jpg",
-            //       "static/images/teacher/cy/thumb-cy-12.jpg"
-            //     ],
-            //     "avatar": "static/images/teacher/cy/avatar-cy.png",
-            //     "banner": "static/images/teacher/cy/banner-cy.jpg",
-            //     "name": "cy"
-            //   },
-            //   "gd": {
-            //     "img": [
-            //       "static/images/teacher/gd/op-gd-01.jpg",
-            //       "static/images/teacher/gd/op-gd-02.jpg",
-            //       "static/images/teacher/gd/op-gd-03.jpg",
-            //       "static/images/teacher/gd/op-gd-04.jpg",
-            //       "static/images/teacher/gd/op-gd-05.jpg"
-            //     ],
-            //     "thumb": [
-            //       "static/images/teacher/gd/thumb-gd-01.jpg",
-            //       "static/images/teacher/gd/thumb-gd-02.jpg",
-            //       "static/images/teacher/gd/thumb-gd-03.jpg",
-            //       "static/images/teacher/gd/thumb-gd-04.jpg",
-            //       "static/images/teacher/gd/thumb-gd-05.jpg"
-            //     ],
-            //     "avatar": "static/images/teacher/gd/avatar-gd.png",
-            //     "banner": "static/images/teacher/gd/gdbanner.jpg",
-            //     "name": "gd"
-            //   },
-            //   "tm": {
-            //     "img": [],
-            //     "thumb": [],
-            //     "avatar": "static/images/teacher/tm/avatar-tm.png",
-            //     "name": "tm"
-            //   },
-            //   "xy": {
-            //     "img": [
-            //       "static/images/teacher/xy/op-xy-01.jpg",
-            //       "static/images/teacher/xy/op-xy-02.jpg",
-            //       "static/images/teacher/xy/op-xy-03.jpg",
-            //       "static/images/teacher/xy/op-xy-04.jpg",
-            //       "static/images/teacher/xy/op-xy-05.jpg"
-            //     ],
-            //     "thumb": [
-            //       "static/images/teacher/xy/thumb-xy-01.jpg",
-            //       "static/images/teacher/xy/thumb-xy-02.jpg",
-            //       "static/images/teacher/xy/thumb-xy-03.jpg",
-            //       "static/images/teacher/xy/thumb-xy-04.jpg",
-            //       "static/images/teacher/xy/thumb-xy-05.jpg"
-            //     ],
-            //     "avatar": "static/images/teacher/xy/avatar-xy.png",
-            //     "banner": "static/images/teacher/xy/xybanner.jpg",
-            //     "name": "xy"
-            //   },
-            //   "yz": {
-            //     "img": [
-            //       "static/images/teacher/yz/op-yz-01.jpg",
-            //       "static/images/teacher/yz/op-yz-02.jpg",
-            //       "static/images/teacher/yz/op-yz-03.jpg",
-            //       "static/images/teacher/yz/op-yz-04.jpg",
-            //       "static/images/teacher/yz/op-yz-05.jpg"
-            //     ],
-            //     "thumb": [
-            //       "static/images/teacher/yz/thumb-yz-01.jpg",
-            //       "static/images/teacher/yz/thumb-yz-02.jpg",
-            //       "static/images/teacher/yz/thumb-yz-03.jpg",
-            //       "static/images/teacher/yz/thumb-yz-04.jpg",
-            //       "static/images/teacher/yz/thumb-yz-05.jpg"
-            //     ],
-            //     "avatar": "static/images/teacher/yz/avatar-yz.png",
-            //     "banner": "static/images/teacher/yz/yzbanner.jpg",
-            //     "name": "yz"
-            //   }
-            // },
+            mobileTeacherList: {
+              "73": {
+                "img": [
+                    {src: 'static/images/teacher/73/op-73-1.jpg',
+                    h: '1200',
+                    w: '768'},
+                  "static/images/teacher/73/op-73-2.jpg",
+                  "static/images/teacher/73/op-73-3.jpg",
+                  "static/images/teacher/73/op-73-4.jpg",
+                  "static/images/teacher/73/op-73-5.jpg"
+                ],
+                "thumb": [
+                  {src: 'static/images/teacher/73/thumb-73-1.jpg',
+                  h: '1200',
+                  w: '768'},
+
+                  "static/images/teacher/73/thumb-73-2.jpg",
+                  "static/images/teacher/73/thumb-73-3.jpg",
+                  "static/images/teacher/73/thumb-73-4.jpg",
+                  "static/images/teacher/73/thumb-73-5.jpg"
+                ],
+                "banner": "static/images/teacher/73/73banner.jpg",
+                "avatar": "static/images/teacher/73/avatar-73.png",
+                "name": "73"
+              },
+              "cy": {
+                "img": [
+                  "static/images/teacher/cy/op-cy-1.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/cy/thumb-cy-03.jpg",
+                  "static/images/teacher/cy/thumb-cy-05.jpg",
+                  "static/images/teacher/cy/thumb-cy-06.jpg",
+                  "static/images/teacher/cy/thumb-cy-07.jpg",
+                  "static/images/teacher/cy/thumb-cy-08.jpg",
+                  "static/images/teacher/cy/thumb-cy-09.jpg",
+                  "static/images/teacher/cy/thumb-cy-10.jpg",
+                  "static/images/teacher/cy/thumb-cy-11.jpg",
+                  "static/images/teacher/cy/thumb-cy-12.jpg"
+                ],
+                "avatar": "static/images/teacher/cy/avatar-cy.png",
+                "banner": "static/images/teacher/cy/banner-cy.jpg",
+                "name": "cy"
+              },
+              "gd": {
+                "img": [
+                  "static/images/teacher/gd/op-gd-01.jpg",
+                  "static/images/teacher/gd/op-gd-02.jpg",
+                  "static/images/teacher/gd/op-gd-03.jpg",
+                  "static/images/teacher/gd/op-gd-04.jpg",
+                  "static/images/teacher/gd/op-gd-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/gd/thumb-gd-01.jpg",
+                  "static/images/teacher/gd/thumb-gd-02.jpg",
+                  "static/images/teacher/gd/thumb-gd-03.jpg",
+                  "static/images/teacher/gd/thumb-gd-04.jpg",
+                  "static/images/teacher/gd/thumb-gd-05.jpg"
+                ],
+                "avatar": "static/images/teacher/gd/avatar-gd.png",
+                "banner": "static/images/teacher/gd/gdbanner.jpg",
+                "name": "gd"
+              },
+              "tm": {
+                "img": [],
+                "thumb": [],
+                "avatar": "static/images/teacher/tm/avatar-tm.png",
+                "name": "tm"
+              },
+              "xy": {
+                "img": [
+                  "static/images/teacher/xy/op-xy-01.jpg",
+                  "static/images/teacher/xy/op-xy-02.jpg",
+                  "static/images/teacher/xy/op-xy-03.jpg",
+                  "static/images/teacher/xy/op-xy-04.jpg",
+                  "static/images/teacher/xy/op-xy-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/xy/thumb-xy-01.jpg",
+                  "static/images/teacher/xy/thumb-xy-02.jpg",
+                  "static/images/teacher/xy/thumb-xy-03.jpg",
+                  "static/images/teacher/xy/thumb-xy-04.jpg",
+                  "static/images/teacher/xy/thumb-xy-05.jpg"
+                ],
+                "avatar": "static/images/teacher/xy/avatar-xy.png",
+                "banner": "static/images/teacher/xy/xybanner.jpg",
+                "name": "xy"
+              },
+              "yz": {
+                "img": [
+                  "static/images/teacher/yz/op-yz-01.jpg",
+                  "static/images/teacher/yz/op-yz-02.jpg",
+                  "static/images/teacher/yz/op-yz-03.jpg",
+                  "static/images/teacher/yz/op-yz-04.jpg",
+                  "static/images/teacher/yz/op-yz-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/yz/thumb-yz-01.jpg",
+                  "static/images/teacher/yz/thumb-yz-02.jpg",
+                  "static/images/teacher/yz/thumb-yz-03.jpg",
+                  "static/images/teacher/yz/thumb-yz-04.jpg",
+                  "static/images/teacher/yz/thumb-yz-05.jpg"
+                ],
+                "avatar": "static/images/teacher/yz/avatar-yz.png",
+                "banner": "static/images/teacher/yz/yzbanner.jpg",
+                "name": "yz"
+              }
+            },
             // 总教师信息列表
             teacherList: {},
             thumb: {},
@@ -263,9 +270,9 @@ export default {
             },
             teacherInfo: {
                 '73': ['曼奇立德主讲老师/资深游戏原画师/CG艺术家'],
-                'yz': ['7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。科班出身，拥有扎实的绘画理论基础及教学理念，良好的审美感。'],
+                'yz': ['7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。'],
                 'gd': ['好好画画'],
-                'xy': ['从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作，能力全面，在公司内长期进行新人引导和培训，拥有极佳的专业态度。'],
+                'xy': ['从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作。'],
                 'tm': '',
             },
             bannerbg: 'www.syaoran.cc:3000/images/public/bannerbg.png'
@@ -607,6 +614,7 @@ export default {
         height: 100%;
         background: #302E2E;
         padding-top: 50px;
+        padding-bottom: 50px;
     }
     .vue-waterfall{
         width: 79%;
@@ -625,7 +633,16 @@ export default {
         z-index: 100;
         width: 100%;
     }
+    .teacherList-mobile  {
+        display: none;
+    }
     @media only screen and (max-width:800px) {
+        .teacherList-mobile  {
+            display: block;
+        }
+        /*.teacherList-table {
+            display: none;
+        }*/
         .teacher-work-list {
             width: 100%;
             display: block;

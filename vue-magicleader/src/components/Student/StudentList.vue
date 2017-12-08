@@ -29,7 +29,7 @@ export default {
                     path: '/studentList/student2d',
                 },
                 {
-                    title: '3D艺核班',
+                    title: '3D角色班',
                     path: '/studentList/student3d'
                 }
             ],

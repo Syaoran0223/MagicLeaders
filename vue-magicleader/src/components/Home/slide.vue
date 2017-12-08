@@ -24,6 +24,9 @@ export default {
                 {
                     src:'static/images/home/slide3.jpg'
                 },
+                {
+                    src:'static/images/home/slide4.jpg'
+                },
 
             ]
         }

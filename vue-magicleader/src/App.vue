@@ -32,6 +32,10 @@ export default {
     font-family: LanTingXiHei;
     src: url('../static/jscss/LanTingXiHei.ttf');
 }
+@font-face {
+    font-family: ruizi;
+    src: url('../static/jscss/ruizi.ttf');
+}
 html, body {
     /*font-family: LanTingXiHei;*/
     font-size: 10px;

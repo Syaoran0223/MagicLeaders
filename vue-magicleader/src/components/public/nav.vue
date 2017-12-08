@@ -19,6 +19,9 @@
         <div class="mobile-nav-container hidden-lg hidden-md" @click="mNavShow = !mNavShow">
             <div class="mobile-nav-title">
                 MagicLeader
+                <div class="mobile-nav-menu">
+                    <img src="static/images/public/menu.png" alt="">
+                </div>
             </div>
             <div class="mobile-nav ">
                 <el-collapse-transition>
@@ -181,9 +184,22 @@ export default {
         text-decoration: none;
     }
     .mobile-nav-title {
+        position: relative;
         height: 30px;
         line-height: 30px;
         /*font-weight: bolder;*/
+    }
+    .mobile-nav-menu {
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        height: 20px;
+        width: 20px;
+        /*background: red;*/
+        z-index: 500;
+    }
+    .mobile-nav-menu img {
+        width: 100%;
     }
     .mobile-nav {
         position: absolute;
