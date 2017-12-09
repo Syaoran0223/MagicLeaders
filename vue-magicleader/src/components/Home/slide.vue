@@ -43,7 +43,7 @@ export default {
                 paginationClickable: true,
                 spaceBetween: 30,
                 centeredSlides: true,
-                autoplay: 2500,
+                autoplay: 3000,
                 autoplayDisableOnInteraction: false,
                 loop : true,
             });

@@ -11,8 +11,8 @@ const fs = require('fs')
 let port = 3000
 // 服务器地址
 // let serverIp = 'http://192.168.1.100'
-let serverIp = 'http://www.syaoran.cc'
-// let serverIp = 'http://www.magicleaders.com'
+// let serverIp = 'http://www.syaoran.cc'
+let serverIp = 'http://www.magicleaders.com'
 
 // var jsonParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())

@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="table-teacher-info">
                                     <p class="table-teacher-info-detail" v-for='i in teacherInfo[teacher.name]'>
-                                        {{ i}}
+                                        {{i}}
                                     </p>
 
                                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <!-- banner 结束 -->
                 <div class="teacher-work-title" v-if='isHome == false'>
-                    作品展示
+                    作  品  节  选
                 </div>
                 <!-- 作品 -->
                 <div class="teacher-waterfall-container">
@@ -269,10 +269,10 @@ export default {
                 'tm': 'Mr.Tm',
             },
             teacherInfo: {
-                '73': ['曼奇立德主讲老师/资深游戏原画师/CG艺术家'],
-                'yz': ['7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。'],
-                'gd': ['好好画画'],
-                'xy': ['从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作。'],
+                '73': ['曼奇立德高级讲师','资深游戏原画师/CG艺术家'],
+                'yz': ['曼奇立德高级讲师','7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。'],
+                'gd': ['曼奇立德高级讲师','好好画画'],
+                'xy': ['曼奇立德高级讲师','从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作。'],
                 'tm': '',
             },
             bannerbg: 'www.syaoran.cc:3000/images/public/bannerbg.png'
@@ -342,6 +342,8 @@ export default {
             console.log('第一次请求ajax', teacherImgList);
             if (teacherImgList != undefined) {
                 this.teacherList = teacherImgListSave
+                id = this.$route.params.id
+                console.log('新 id', id);
                 this.watchRoute(id)
                 // this.bannerSwiper()
                 return
@@ -586,7 +588,7 @@ export default {
         color: white;
         height: 3.2rem;
         line-height: 3.2rem;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         /*font-weight: bolder;*/
     }
     /* 移动端作品列表 */
@@ -613,6 +615,7 @@ export default {
         width: 100%;
         height: 100%;
         background: #302E2E;
+        /*background: #292929;*/
         padding-top: 50px;
         padding-bottom: 50px;
     }

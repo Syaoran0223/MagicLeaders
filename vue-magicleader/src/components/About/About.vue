@@ -1,11 +1,11 @@
 <template lang="html">
     <div id='id-about'>
         <!-- 原版 banner -->
-        <!-- <div class="about-container">
-            <img :src="aboutImageSrc" alt="">
-        </div> -->
-        <!-- 新版图文 banner -->
         <div class="about-container">
+            <img :src="aboutImageSrc" alt="">
+        </div>
+        <!-- 新版图文 banner -->
+        <!-- <div class="about-container">
             <div class="about-img about-img-1">
                 <img src="static/images/about/about-1.png" alt="">
             </div>
@@ -29,12 +29,8 @@
                 <p>核心成员业界资历10年以上，从业经验丰富，绘画功底扎实，设计理念与时俱进；</p>
                 <p>依靠精准的市场定位、高质量的课程体系、和严格规范的教学管理，</p>
                 <p>为国内一批热爱原画的朋友提供了一个交流互动的学习平台。</p>
-                <!-- <div class="about-text-title-vice">
-                    ———— OUR ADVANTAGES ————
-                </div> -->
-
             </div>
-        </div>
+        </div> -->
 
     </div>
 </template>
