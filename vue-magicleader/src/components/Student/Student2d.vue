@@ -44,7 +44,7 @@ export default {
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
-            addIndex: 20,
+            addIndex: 10,
             totalLength: '1',
         }
     },
@@ -99,6 +99,7 @@ export default {
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
                 let img = this.$store.state.student2dList.slice(startIndex, loadingIndex)
+                console.log('img', img.length)
                 if (img.length != 0) {
                     this.student2dList = this.student2dList.concat(img)
                     $state.loaded()

@@ -256,7 +256,7 @@ export default {
             banner: '',
             teacherWeibo: {
                 '73': 'http://weibo.com/73art',
-                'yz': '',
+                'yz': 'https://weibo.com/u/6155261248',
                 'gd': 'http://weibo.com/diaodiaotiaotiao',
                 'xy': 'https://xjxxx2002.artstation.com/',
                 'tm': '',
@@ -271,11 +271,11 @@ export default {
             teacherInfo: {
                 '73': ['曼奇立德高级讲师','资深游戏原画师/CG艺术家'],
                 'yz': ['曼奇立德高级讲师','7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。'],
-                'gd': ['曼奇立德高级讲师','好好画画'],
+                'gd': ['曼奇立德高级讲师','资深游戏原画师/CG艺术家'],
                 'xy': ['曼奇立德高级讲师','从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作。'],
                 'tm': '',
             },
-            bannerbg: 'www.syaoran.cc:3000/images/public/bannerbg.png'
+            bannerbg: 'www.magicleaders.com:3000/images/public/bannerbg.png'
         }
     },
     created() {
