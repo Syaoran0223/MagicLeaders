@@ -12,6 +12,10 @@ import StudentList from '@/components/Student/StudentList'
 import Student2d from '@/components/Student/Student2d'
 // 学生作品 3d
 import Student3d from '@/components/Student/Student3d'
+
+// 学生作品 2d基础
+import StudentBase from '@/components/Student/StudentBase'
+
 // 助教作品
 import AssistantTeacher from '@/components/AssistantTeacher/AssistantTeacher'
 // 教学环境
@@ -66,7 +70,8 @@ const router = new Router({
         {
             path: '/studentList',
             name: 'studentList',
-            component: StudentList,meta: {
+            component: StudentList,
+            meta: {
                 title: '学生作品'
             },
             children: [
@@ -86,14 +91,14 @@ const router = new Router({
                         title: '3D艺核班'
                     },
                 },
-              // {
-              //   path: 'studentbase',
-              //   name: 'student2d',
-              //   component: Student2d,
-              //   meta: {
-              //     title: '2D基础版'
-              //   },
-              // },
+                {
+                  path: 'studentbase',
+                  name: 'studentbase',
+                  component: StudentBase,
+                  meta: {
+                    title: '2D基础班'
+                  },
+                },
 
 
             ]

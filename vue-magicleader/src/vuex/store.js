@@ -19,6 +19,8 @@ let vuex = new Vuex.Store({
         student2dList: '',
         // 3d 学生作品
         student3dList: '',
+        // 3d 学生作品
+        studentBaseList: '',
         // 助教作品
         assistantTeacherList: '',
     },
@@ -37,6 +39,9 @@ let vuex = new Vuex.Store({
         },
         student3dListSave(state, student3dList) {
             state.student3dList = student3dList
+        },
+        studentBaseListSave(state, studentBaseList) {
+            state.studentBaseList = studentBaseList
         },
         assistantTeacherListSave(state, assistantTeacherList) {
             state.assistantTeacherList = assistantTeacherList
