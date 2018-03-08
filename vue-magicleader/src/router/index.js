@@ -86,6 +86,15 @@ const router = new Router({
                         title: '3D艺核班'
                     },
                 },
+              // {
+              //   path: 'studentbase',
+              //   name: 'student2d',
+              //   component: Student2d,
+              //   meta: {
+              //     title: '2D基础版'
+              //   },
+              // },
+
 
             ]
         },
