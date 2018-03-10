@@ -75,6 +75,8 @@ export default {
                     console.log('src', e.src);
                     arr.push(src)
                 })
+                // 随机排序
+                arr = _.shuffle(arr)
                 this.isLoad = false
                 this.assistantTeacherList = arr.slice(0, this.loadingIndex)
                 console.log('读取到的图片', this.assistantTeacherList);

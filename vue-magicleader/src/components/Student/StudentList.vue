@@ -31,13 +31,14 @@
             path: '/studentList/student2d',
           },
           {
-            title: '3D角色班',
-            path: '/studentList/student3d',
-          },
-          {
             title: '2D基础班',
             path: '/studentList/studentbase',
           },
+          {
+            title: '3D角色班',
+            path: '/studentList/student3d',
+          },
+
         ],
       }
     },
