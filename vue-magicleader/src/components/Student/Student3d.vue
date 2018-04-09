@@ -58,7 +58,7 @@ export default {
         getStudent3dList() {
             let state = this.$store.state
             let url = state.path + '/student3dList'
-            console.log('url', url);
+            // console.log('url', url);
             let imgList = state.student3dList
             if (imgList != '') {
                 this.isLoad = false

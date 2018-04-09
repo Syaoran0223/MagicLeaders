@@ -26,7 +26,8 @@ export default {
             guideList: [
                 {
                     imgSrc:'static/images/home/index1.jpg',
-                    href:'https://pan.baidu.com/s/1nvTxhIp?qq-pf-to=pcqq.c2c&errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0#list/path=%2F%E6%8A%A5%E5%90%8D%E8%A1%A8&parentPath=%2F',
+                    href:'https://pan.baidu.com/s/1LUiJMR_HAOjCUHu_edMGgw#list/path=%2F',
+
                 },
                 {
                     imgSrc:'static/images/home/index2.jpg',

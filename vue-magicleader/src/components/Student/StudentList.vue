@@ -19,7 +19,7 @@
 <script>
   import student2d from '@/components/Student/Student2d'
   import student3d from '@/components/Student/Student3d'
-  import studentbase from '@/components/Student/Studentbase'
+  import studentbase from '@/components/Student/StudentBase'
 
   export default {
     data() {

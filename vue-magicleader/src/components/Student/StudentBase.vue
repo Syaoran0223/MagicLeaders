@@ -58,7 +58,7 @@ export default {
       getStudentBaseList() {
             let state = this.$store.state
             let url = state.path + '/studentBaseList'
-            console.log('url', url);
+            // console.log('url', url);
             let imgList = state.studentBaseList
             if (imgList != '') {
                 this.isLoad = false
@@ -68,7 +68,7 @@ export default {
             // 确认 vuex 内没有作品信息后显示 加载中...
             this.isLoad = true
             let _this = this
-            console.log('开始执行读取图片了');
+            // console.log('开始执行读取图片了');
             $.post(url, (res)=> {
                 let initData = JSON.parse(res)
                 let arr = []
@@ -85,7 +85,7 @@ export default {
                 this.studentBaseList = arr.slice(0, this.loadingIndex)
                 this.$store.commit('studentBaseListSave', arr)
             })
-            console.log('this.studentBaseList', this.studentBaseList)
+            // console.log('this.studentBaseList', this.studentBaseList)
         },
         infiniteHandler( $state) {
             setTimeout(() => {
@@ -94,7 +94,7 @@ export default {
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
                 let img = this.$store.state.studentBaseList.slice(startIndex, loadingIndex)
-                console.log('img,length', img.length, startIndex, loadingIndex);
+                // console.log('img,length', img.length, startIndex, loadingIndex);
                 if (img.length != 0) {
 
                     this.studentBaseList = this.studentBaseList.concat(img)

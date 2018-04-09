@@ -16,11 +16,14 @@ export default {
         return {
             slideList: [
                 {
-                    src:'static/images/home/slide1.jpg'
+                    src:'static/images/home/slide5.jpg'
                 },
-                {
-                    src:'static/images/home/slide2.jpg'
-                },
+                // {
+                //     src:'static/images/home/slide1.jpg'
+                // },
+                // {
+                //     src:'static/images/home/slide2.jpg'
+                // },
                 {
                     src:'static/images/home/slide3.jpg'
                 },
@@ -33,6 +36,7 @@ export default {
     },
     mounted() {
         this.swiper()
+        console.log('debug slide')
     },
     methods: {
         swiper:()=> {

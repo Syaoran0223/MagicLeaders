@@ -54,7 +54,7 @@ export default {
         getAssistantTeacherList() {
             let state = this.$store.state
             let url = state.path + '/assistantTeacher'
-            console.log('url', url);
+            // console.log('url', url);
             let imgList = state.assistantTeacherList
             if (imgList != '') {
                 this.isLoad = false

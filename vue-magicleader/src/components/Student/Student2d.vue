@@ -61,7 +61,7 @@ export default {
             let state = this.$store.state
             let url = state.path + '/student2dList'
             // let url = 'http://39.108.172.18:3000/student2dList'
-            console.log('url', url);
+            // console.log('url', url);
             let imgList = state.student2dList
             if (imgList != '') {
                 this.isLoad = false
