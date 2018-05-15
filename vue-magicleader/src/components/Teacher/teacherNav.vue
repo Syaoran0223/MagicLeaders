@@ -80,7 +80,7 @@ export default {
                 {
                     imgSrc: this.$store.state.imgPath + '/teacher/tm/avatar-tm.png',
                     title: 'Mr.TM',
-                    path: '/teacher/home',
+                    path: '/teacher/tm',
                     type: '3D',
                     show: false,
                     teacherId: 4,

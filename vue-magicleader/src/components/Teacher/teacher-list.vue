@@ -204,6 +204,22 @@ export default {
                 "img": [],
                 "thumb": [],
                 "avatar": "static/images/teacher/tm/avatar-tm.png",
+                "img": [
+                  "static/images/teacher/xy/op-xy-01.jpg",
+                  "static/images/teacher/xy/op-xy-02.jpg",
+                  "static/images/teacher/xy/op-xy-03.jpg",
+                  "static/images/teacher/xy/op-xy-04.jpg",
+                  "static/images/teacher/xy/op-xy-05.jpg"
+                ],
+                "thumb": [
+                  "static/images/teacher/xy/thumb-xy-01.jpg",
+                  "static/images/teacher/xy/thumb-xy-02.jpg",
+                  "static/images/teacher/xy/thumb-xy-03.jpg",
+                  "static/images/teacher/xy/thumb-xy-04.jpg",
+                  "static/images/teacher/xy/thumb-xy-05.jpg"
+                ],
+                "avatar": "static/images/teacher/xy/avatar-xy.png",
+                "banner": "static/images/teacher/xy/xybanner.jpg",
                 "name": "tm"
               },
               "xy": {
@@ -259,7 +275,7 @@ export default {
                 'yz': 'https://weibo.com/u/6155261248',
                 'gd': 'http://weibo.com/diaodiaotiaotiao',
                 'xy': 'https://xjxxx2002.artstation.com/',
-                'tm': '',
+                'tm': 'https://weibo.com/u/5544966092',
             },
             teacherName: {
                 '73': '73',
@@ -273,7 +289,7 @@ export default {
                 'yz': ['曼奇立德高级讲师','7年的游戏制作经验。曾长期担任主美职责，具有丰富的研发经验，擅长角色设计，插图制作等。'],
                 'gd': ['曼奇立德高级讲师','资深游戏原画师/CG艺术家'],
                 'xy': ['曼奇立德高级讲师','从业经验丰富，在游戏美术的技术领域拥有大量的积累，精通各种3D游戏制作软件和商业渲染引擎，同时擅长角色制作和场景制作。'],
-                'tm': '',
+                'tm': ['曼奇立德高级讲师','十年以上游戏美术行业经验，精通各种3D游戏角色制作流程，擅长沟通式教学。'],
             },
             bannerbg: 'www.magicleaders.com:3000/images/public/bannerbg.png'
         }
@@ -337,6 +353,7 @@ export default {
         },
         formatTeacherList() {
             let url = this.$store.state.path + '/teacherList'
+            console.log('请求地址', url)
             let teacherImgList = this.$store.state.teacherList
             let id = this.$route.params.id
             console.log('第一次请求ajax', teacherImgList);
@@ -345,7 +362,6 @@ export default {
                 id = this.$route.params.id
                 console.log('新 id', id);
                 this.watchRoute(id)
-                // this.bannerSwiper()
                 return
             }
             $.post(url, (res)=> {
@@ -363,8 +379,8 @@ export default {
         watchRoute(id) {
             let teacherList = this.teacherList
             console.log('debug teacherList', teacherList);
-            if (id == 'home' || id == 'tm') {
-                console.log('home || tm', id);
+            if (id == 'home') {
+                console.log('home', id);
                 this.teacher = ''
                 this.isHome = true
             } else {
