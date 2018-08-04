@@ -19,6 +19,10 @@ import VueBlu from 'vue-blu'
 import 'vue-blu/dist/css/vue-blu.min.css'
 Vue.use(VueBlu)
 
+import {log} from '@/components/common/utils'
+// const log =
+Vue.prototype.log = log
+
 // 点击切换标题
 // Vue.use(VueRouterTitle,options)
 Vue.use(require('vue-wechat-title'));

@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         params() {
-            console.log('params', this.$route)
+            this.log('params', this.$route)
         },
     },
     components: {

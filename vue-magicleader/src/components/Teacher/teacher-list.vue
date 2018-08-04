@@ -282,7 +282,7 @@ export default {
                 'yz': 'YZ',
                 'gd': '調調',
                 'xy': '逍遥',
-                'tm': 'Mr.Tm',
+                'tm': 'Mr.TM',
             },
             teacherInfo: {
                 '73': ['曼奇立德高级讲师','资深游戏原画师/CG艺术家'],
@@ -299,7 +299,7 @@ export default {
         this.formatTeacherList()
         // 初始化页面, 刷新后跳转到达正确位置
         let path = this.$route.path
-        console.log('watch path', path);
+        this.log('watch path', path);
         let id = this.$route.params.id
         if (path.includes('/teacher/')) {
             this.id = id
@@ -340,7 +340,7 @@ export default {
                 loop : true,
                 initialSlide: 1,
             });
-            console.log('执行了', );
+            // this.log('执行了', );
         },
         formatHomeImg() {
             let state = this.$store.state.imgPath + '/teacher'
@@ -353,14 +353,14 @@ export default {
         },
         formatTeacherList() {
             let url = this.$store.state.path + '/teacherList'
-            console.log('请求地址', url)
+            this.log('请求地址', url)
             let teacherImgList = this.$store.state.teacherList
             let id = this.$route.params.id
-            console.log('第一次请求ajax', teacherImgList);
+            this.log('第一次请求ajax', teacherImgList);
             if (teacherImgList != undefined) {
                 this.teacherList = teacherImgListSave
                 id = this.$route.params.id
-                console.log('新 id', id);
+                this.log('新 id', id);
                 this.watchRoute(id)
                 return
             }
@@ -368,8 +368,8 @@ export default {
                 let initData = JSON.parse(res)
                 this.teacherList = initData
                 this.$store.commit('teacherImgListSave', initData)
-                console.log('ajax', initData);
-                console.log('debug id', id);
+                this.log('ajax', initData);
+                this.log('debug id', id);
                 this.watchRoute(id)
                 // this.bannerSwiper()
 
@@ -378,26 +378,26 @@ export default {
         // 监听路由
         watchRoute(id) {
             let teacherList = this.teacherList
-            console.log('debug teacherList', teacherList);
+            this.log('debug teacherList', teacherList);
             if (id == 'home') {
-                console.log('home', id);
+                this.log('home', id);
                 this.teacher = ''
                 this.isHome = true
             } else {
                 this.isHome = false
                 this.teacher = teacherList[id]
-                console.log('this.teacher', this.teacher);
+                this.log('this.teacher', this.teacher);
                 this.banner = this.teacher.banner
                 this.weibo = this.teacherWeibo[id]
             }
-            console.log('this.isHome' , this.isHome);
+            this.log('this.isHome' , this.isHome);
         },
     },
     watch: {
         $route() {
             // 监听路由 替换内容
             let path = this.$route.path
-            console.log('watch path', path);
+            this.log('watch path', path);
             let id = this.$route.params.id
             if (path.includes('/teacher/')) {
                 this.id = id

@@ -3,7 +3,7 @@
         <!-- <div class="student2d-load" v-if='isLoad'>
             图片加载中...
         </div> -->
-        <div class="waterfall-container">
+        <div class="waterfall-container" v-if="student2dList != ''">
             <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="student2dList" auto-resize='true'>
                 <div class="">
                 <waterfall-slot class='waterfall-slot'
@@ -40,7 +40,7 @@ export default {
         return {
             line: 'h',
             aboutImageSrc: 'static/images/about/about.jpg',
-            student2dList: '11',
+            student2dList: '',
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
@@ -61,7 +61,7 @@ export default {
             let state = this.$store.state
             let url = state.path + '/student2dList'
             // let url = 'http://39.108.172.18:3000/student2dList'
-            // console.log('url', url);
+            // this.log('url', url);
             let imgList = state.student2dList
             if (imgList != '') {
                 this.isLoad = false
@@ -71,9 +71,9 @@ export default {
             // 确认 vuex 内没有作品信息后显示 加载中...
             this.isLoad = true
             let _this = this
-            console.log('开始执行读取图片了');
+            this.log('开始执行读取图片了');
             $.post(url, (res)=> {
-                console.log('开始读取图片了');
+                this.log('开始读取图片了');
                 let initData = JSON.parse(res)
                 let arr = []
                 initData.forEach((e) => {
@@ -89,7 +89,7 @@ export default {
                 this.student2dList = arr.slice(this.startIndex, this.loadingIndex)
                 this.$store.commit('student2dListSave', arr)
             })
-            console.log('this.student2dList', this.student2dList)
+            this.log('this.student2dList', this.student2dList)
         },
         // 根据滚动条加载图片
         infiniteHandler($state) {
@@ -99,14 +99,14 @@ export default {
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
                 let img = this.$store.state.student2dList.slice(startIndex, loadingIndex)
-                console.log('img', img.length)
+                this.log('img', img.length)
                 if (img.length != 0) {
                     this.student2dList = this.student2dList.concat(img)
                     $state.loaded()
-                    console.log('img,length', img.length);
+                    this.log('img,length', img.length);
                 } else if(this.$store.state.student2dList.length != 0 && img.length == 0){
                     $state.complete()
-                    console.log('完成', this.student2dList.length);
+                    this.log('完成', this.student2dList.length);
                 }
             }, 1000);
         },
@@ -115,9 +115,9 @@ export default {
     },
     updated() {
         // this.infiniteHandler($state)
-    console.log('更新了2d');
+    this.log('更新了2d');
     if (this.$store.state.student2dList.length != undefined) {
-        console.log('2d作品进度', this.student2dList.length, '/' ,this.$store.state.student2dList.length);
+        this.log('2d作品进度', this.student2dList.length, '/' ,this.$store.state.student2dList.length);
     }
 
     },

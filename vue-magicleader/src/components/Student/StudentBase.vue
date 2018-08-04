@@ -3,7 +3,7 @@
         <div class="student3d-load" v-if='isLoad'>
             图片加载中...
         </div>
-        <div class="waterfall-container">
+        <div class="waterfall-container" v-if="studentBaseList != ''">
             <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="studentBaseList" auto-resize='true'>
                 <div class="">
                 <waterfall-slot class='waterfall-slot'
@@ -39,7 +39,7 @@ export default {
         return {
             line: 'h',
             aboutImageSrc: 'static/images/about/about.jpg',
-            studentBaseList: '11',
+            studentBaseList: '',
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
@@ -58,7 +58,7 @@ export default {
       getStudentBaseList() {
             let state = this.$store.state
             let url = state.path + '/studentBaseList'
-            // console.log('url', url);
+            // this.log('url', url);
             let imgList = state.studentBaseList
             if (imgList != '') {
                 this.isLoad = false
@@ -68,7 +68,7 @@ export default {
             // 确认 vuex 内没有作品信息后显示 加载中...
             this.isLoad = true
             let _this = this
-            // console.log('开始执行读取图片了');
+            // this.log('开始执行读取图片了');
             $.post(url, (res)=> {
                 let initData = JSON.parse(res)
                 let arr = []
@@ -85,7 +85,7 @@ export default {
                 this.studentBaseList = arr.slice(0, this.loadingIndex)
                 this.$store.commit('studentBaseListSave', arr)
             })
-            // console.log('this.studentBaseList', this.studentBaseList)
+            // this.log('this.studentBaseList', this.studentBaseList)
         },
         infiniteHandler( $state) {
             setTimeout(() => {
@@ -94,7 +94,7 @@ export default {
                 let startIndex = this.startIndex
                 let loadingIndex = this.loadingIndex
                 let img = this.$store.state.studentBaseList.slice(startIndex, loadingIndex)
-                // console.log('img,length', img.length, startIndex, loadingIndex);
+                // this.log('img,length', img.length, startIndex, loadingIndex);
                 if (img.length != 0) {
 
                     this.studentBaseList = this.studentBaseList.concat(img)
@@ -102,14 +102,14 @@ export default {
 
                 } else if(this.$store.state.studentBaseList.length != 0 && img.length == 0){
                     $state.complete()
-                    console.log('完成', this.studentBaseList.length);
+                    this.log('完成', this.studentBaseList.length);
                 }
             }, 1000);
         },
     },
     updated() {
         // if (this.$store.state.student2dList.length != undefined) {
-        //         console.log('2基础班作品进度', this.studentBaseList.length, '/' ,this.$store.state.studentBaseList.length);
+        //         this.log('2基础班作品进度', this.studentBaseList.length, '/' ,this.$store.state.studentBaseList.length);
         // }
     },
     components: {

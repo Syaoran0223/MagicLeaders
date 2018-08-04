@@ -44,9 +44,9 @@
     },
     updated() {
 //      let path = this.$route.path
-//      console.log('切换了页面', path)
+//      this.log('切换了页面', path)
 //      if (path.includes('studentList')) {
-//        console.log('xx', document.documentElement.clientHeight)
+//        this.log('xx', document.documentElement.clientHeight)
 //      }
 
 

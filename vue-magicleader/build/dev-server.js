@@ -81,7 +81,7 @@ var server
 var portfinder = require('portfinder')
 portfinder.basePort = port
 
-console.log('> Starting dev server...')
+
 devMiddleware.waitUntilValid(() => {
   portfinder.getPort((err, port) => {
     if (err) {

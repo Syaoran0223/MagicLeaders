@@ -1,5 +1,5 @@
 <template lang="html">
-    <div id='id-assistantTeacher'>
+    <div id='id-assistantTeacher' v-if="assistantTeacherList != ''">
         <div class="waterfall-container">
             <waterfall :line-gap="300" :max-line-gap="400" :min-line-gap="200" :watch="assistantTeacherList" auto-resize='true'>
                 <div class="">
@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             line: 'h',
-            assistantTeacherList: '11',
+            assistantTeacherList: '',
             isLoad: true,
             startIndex: 0,
             loadingIndex: 10,
@@ -54,7 +54,7 @@ export default {
         getAssistantTeacherList() {
             let state = this.$store.state
             let url = state.path + '/assistantTeacher'
-            // console.log('url', url);
+            // this.log('url', url);
             let imgList = state.assistantTeacherList
             if (imgList != '') {
                 this.isLoad = false
@@ -72,17 +72,17 @@ export default {
                         return
                     }
                     let src = e
-                    console.log('src', e.src);
+                    this.log('src', e.src);
                     arr.push(src)
                 })
                 // 随机排序
                 arr = _.shuffle(arr)
                 this.isLoad = false
                 this.assistantTeacherList = arr.slice(0, this.loadingIndex)
-                console.log('读取到的图片', this.assistantTeacherList);
+                this.log('读取到的图片', this.assistantTeacherList);
                 this.$store.commit('assistantTeacherListSave', arr)
             })
-            console.log('this.assistantTeacherList', this.assistantTeacherList)
+            this.log('this.assistantTeacherList', this.assistantTeacherList)
         },
         infiniteHandler($state) {
             setTimeout(() => {
@@ -94,19 +94,19 @@ export default {
                 if (img.length != 0) {
                     this.assistantTeacherList = this.assistantTeacherList.concat(img)
                     $state.loaded()
-                    console.log('img,length', img.length);
+                    this.log('img,length', img.length);
                 } else if(this.$store.state.assistantTeacherList.length != 0 && img.length == 0){
                     $state.complete()
-                    console.log('完成', this.assistantTeacherList.length);
+                    this.log('完成', this.assistantTeacherList.length);
                 }
             }, 1000);
         },
     },
     updated() {
         // this.infiniteHandler($state)
-    console.log('更新了教师作品列表');
+    this.log('更新了教师作品列表');
     if (this.$store.state.assistantTeacherList.length != undefined) {
-                console.log('助教作品进度', this.assistantTeacherList.length , '/', this.$store.state.assistantTeacherList.length);
+                this.log('助教作品进度', this.assistantTeacherList.length , '/', this.$store.state.assistantTeacherList.length);
         }
     },
     components: {

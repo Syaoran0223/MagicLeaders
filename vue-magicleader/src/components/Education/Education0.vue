@@ -154,7 +154,7 @@ export default {
         getImageList() {
             let state = this.$store.state
             let url = state.path + '/educationList'
-            console.log('url', url);
+            this.log('url', url);
             let data = ''
             let imgList = state.educationImgList
             if (imgList != '') {
@@ -170,13 +170,13 @@ export default {
                         return
                     }
                     let src = e.src
-                    console.log('e', src)
+                    this.log('e', src)
                     arr.push(src)
                 })
                 this.educationImgList = arr
                 this.$store.commit('educationImgListSave', arr)
             })
-            console.log('this.educationImgList', this.educationImgList)
+            this.log('this.educationImgList', this.educationImgList)
         },
     },
 }

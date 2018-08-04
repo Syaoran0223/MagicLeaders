@@ -140,7 +140,7 @@ const router = new Router({
     // document.title = title;
     if (to.path) {
         _hmt.push(['_trackPageview', '/#' + to.fullPath]);
-        console.log('访问+1');
+        // console.log('访问量+1')
  }
     next();
 });

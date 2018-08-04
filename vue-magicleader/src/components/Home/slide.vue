@@ -36,7 +36,7 @@ export default {
     },
     mounted() {
         this.swiper()
-        console.log('debug slide')
+        this.log('debug slide')
     },
     methods: {
         swiper:()=> {
