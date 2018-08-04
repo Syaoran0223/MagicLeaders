@@ -64,7 +64,7 @@ var currentTime = function() {
 var apiLog = function(apiName, r) {
     log(currentTime())
     log(`api: ${apiName}`)
-    log('返回数据', r.toString())
+    log('返回数据', r.toString().length)
 }
 // 返回页面
 var sendHtml = function(path, response) {
@@ -89,6 +89,8 @@ var imgPath = '../vue-magicleader/images/'
 var student2dList = []
 // 学生3d 作品
 var student3dList = []
+// 学生 2d基础 作品
+var studentBaseList = []
 // 助教作品
 var teacherAssistantList = []
 // var teacherAssistantList = []
@@ -149,6 +151,7 @@ var getWorksList = function(typeName, arr) {
 getWorksList('assistantTeacherWorks', teacherAssistantList)
 getWorksList('studentWorks2d', student2dList)
 getWorksList('studentWorks3d', student3dList)
+getWorksList('studentWorksBase', studentBaseList)
 getWorksList('education', educationList)
 getWorksList('admissions', admissionsList)
 // 读取 teacher 内 多个教师文件夹
@@ -242,8 +245,12 @@ var getTeacherInfo = function() {
 }
 getTeacherInfo()
 
-// 发送 post 返回数组
-// 2d学生作品
+// 获取地址列表
+app.post('/admissionsSrc', function(request, response) {
+    var r = fs.readFileSync('./db/admissionsSrc.json')
+    apiLog('/admissionsSrc', r)
+    response.send(r)
+})
 
 // 2d学生作品
 app.post('/student2dList', function(request,response){
@@ -256,10 +263,15 @@ app.post('/student2dList', function(request,response){
 app.post('/student3dList', function(request,response){
     var r = fs.readFileSync('./db/studentWorks3d.json')
     apiLog('/student3d', r)
-
-
     response.send(r)
 })
+// 2d基础 学生作品
+app.post('/studentBaseList', function(request,response){
+    var r = fs.readFileSync('./db/studentWorksBase.json')
+    apiLog('/studentBaseList', r)
+    response.send(r)
+})
+
 // 助教作品
 app.post('/assistantTeacher', function(request,response){
     var r = fs.readFileSync('./db/assistantTeacherWorks.json')
