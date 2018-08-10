@@ -10,11 +10,12 @@
                     </div>
                     <div class="footer-part-content-container footer-left-margin">
                         <ul class="footer-part-content " v-for='left in footerPartLeft.slice(1)'>
-                            <a :href="left.path" target="_blank">
+                          <!--<a :href="left.path" target="_blank">-->
+                            <!--<a :href="#" target="_blank">-->
                                 <li>
                                     {{ left.title }}
                                 </li>
-                            </a>
+                            <!--</a>-->
                         </ul>
                     </div>
 
@@ -156,7 +157,8 @@ export default {
         margin: 15px auto 30px auto;
     }
     #footer {
-        width: 100%;
+        width: 80%;
+        margin:0 auto;
         /*margin-bottom: 10px;*/
     }
     #footer a {

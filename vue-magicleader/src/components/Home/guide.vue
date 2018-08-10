@@ -4,9 +4,9 @@
             <div class="row">
                 <div class="guide-part col-lg-3 col-md-3 col-sm-6 col-xs-6" v-for='g in guideList'>
                     <div class="" v-if=" g.href != ''">
-                        <a :href="g.href" target="_blank">
+                        <!--<a :href="g.href" target="_blank">-->
                             <div class="guide-part-bg"></div>
-                        </a>
+                        <!--</a>-->
                         <img :src="g.imgSrc" alt="">
                     </div>
                     <div class="" v-else>

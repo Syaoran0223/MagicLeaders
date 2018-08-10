@@ -37,7 +37,7 @@
 
                                 </div>
                                 <div class="table-teacher-weibo">
-                                    <a :href="weibo">{{ weibo }}</a>
+                                    <!--<a :href="weibo">{{ weibo }}</a>-->
                                 </div>
                                 <div class="table-teacher-logo">
                                     <img src="static/images/teacher/public/teacher-logo.png" alt="">

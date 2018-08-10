@@ -39,7 +39,7 @@
 export default {
     data() {
         return {
-            aboutImageSrc: 'static/images/about/about.jpg'
+            aboutImageSrc: 'static/images/about/about1.jpeg'
         }
     },
 }

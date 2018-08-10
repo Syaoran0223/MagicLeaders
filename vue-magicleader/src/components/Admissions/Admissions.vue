@@ -19,8 +19,9 @@
                     <img :src="admissionsImgList[3]">
                 </a>
             </div> -->
-
-            <div class="admissions-img" v-for="(ad, index) in admissionsImgList" v-if="admissionsImgList && srcList">
+  <!--{{admissionsImgList}}-->
+          <!--src: {{srcList}}-->
+            <div class="admissions-img" v-for="(ad, index) in admissionsImgList" v-if="admissionsImgList">
                 <a :href="srcList[index]" target="_blank" v-if="srcList[index] != ''">
                     <img :src="admissionsImgList[index]">
 
@@ -62,7 +63,8 @@ export default {
             }
             let _this = this
             $.post(urlSrc, data, (srcList) => {
-                this.srcList = JSON.parse(srcList)                
+//                this.srcList = JSON.parse(srcList)
+//                this.log('srcList', srcList)
             }).then((srcList)=> {
                 $.post(url, data, (res)=> {
                     let initData = JSON.parse(res)
@@ -95,5 +97,8 @@ export default {
     width: 100%;
     height: 100%;
 }
+.admissions-container a {
+    cursor: default;
+  }
 
 </style>
